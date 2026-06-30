@@ -6,11 +6,11 @@
    Google button. Tokens only (one documented focus-ring tint).
    ========================================================================== */
 
-/* Centered auth area (no forced viewport height — page scrolls normally) */
+/* Centered auth area (compact vertical rhythm — the page scrolls normally) */
 .auth-page {
     display: flex;
     justify-content: center;
-    padding-block: var(--space-64);
+    padding-block: var(--space-40);
     padding-inline: var(--space-20);
 }
 .auth {
@@ -188,7 +188,7 @@
    Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
-    .auth-page { padding-block: var(--space-40); padding-inline: var(--space-16); }
+    .auth-page { padding-block: var(--space-32); padding-inline: var(--space-16); }
 }
 
 @media (prefers-reduced-motion: reduce) {

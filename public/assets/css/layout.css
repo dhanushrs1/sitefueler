@@ -160,11 +160,16 @@ a:hover {
 
 /* ==========================================================================
    8. Main Content Wrapper
+   --------------------------------------------------------------------------
+   Sized to its content so the footer sits right under short pages (auth,
+   forgot-password, etc.) instead of leaving a tall empty band before it.
+   A forced viewport height (min-height: 100vh) was the prior cause of that
+   gap; on typical screens the marketing footer (CTA card + dark columns) is
+   already tall enough to reach the viewport bottom on its own.
    ========================================================================== */
 .main-content {
     display: block;
     width: 100%;
-    min-height: 100vh;
 }
 
 
