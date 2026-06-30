@@ -5,6 +5,18 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.1] — UI Refinements
+
+### Changed
+- **Reduced corner radius** for a more professional, less pill-like look:
+  `--radius-sm` 12 → 6px, `--radius-md` 16 → 10px, `--radius-lg` 24 → 14px.
+  Propagates to buttons, inputs, alerts, cards, tables, and modals via tokens.
+- **Tighter, minimalist button scale:** default `--button-height` 48 → 40px;
+  sizes are now Small 32 / Medium 40 / Large 48 with reduced padding and 14px
+  text on Small/Medium (16px on Large).
+- Synced specs: `design-system.md` §5, `button.md` §4, and the radius rows in
+  form/alert/card/modal specs.
+
 ## [0.2.0] — Core UI Components
 
 Milestone 2. Seven token-based, accessible, reusable components built via the

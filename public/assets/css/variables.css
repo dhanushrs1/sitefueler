@@ -114,11 +114,12 @@
 
     /* ----------------------------------------------------------------------
        7. Border Radius  (design-system.md §5)
+       Subtle, professional rounding — not pill-like.
        ---------------------------------------------------------------------- */
-    --radius-sm:    12px;   /* buttons, inputs */
-    --radius-md:    16px;   /* cards, images */
-    --radius-lg:    24px;   /* larger surfaces / panels */
-    --radius-full:  999px;  /* badges, pills */
+    --radius-sm:    6px;    /* buttons, inputs, small controls */
+    --radius-md:    10px;   /* cards, images, modals */
+    --radius-lg:    14px;   /* larger surfaces / panels */
+    --radius-full:  999px;  /* badges, pills, toggles */
 
     /* ----------------------------------------------------------------------
        8. Shadows  (design-system.md §6) — only three levels exist
@@ -160,9 +161,9 @@
     --image-radius:     var(--radius-md);  /* 16px */
 
     /* ----------------------------------------------------------------------
-       13. Button Height  (design-system.md §11)
+       13. Button Height  (design-system.md §11) — Medium / default
        ---------------------------------------------------------------------- */
-    --button-height:    48px;
+    --button-height:    40px;
 
     /* ----------------------------------------------------------------------
        14. Input Height  (design-system.md §12)

@@ -32,7 +32,7 @@ label, and an optional trailing icon — all centered on one line.
 
 | Property       | Value                                  |
 | -------------- | -------------------------------------- |
-| Corner radius  | 12px (`--radius-sm`) — no exceptions   |
+| Corner radius  | 6px (`--radius-sm`) — no exceptions    |
 | Font family    | `--font-family-base`                   |
 | Font weight    | `--font-weight-semibold` (600)         |
 | Transition     | 200ms (`--duration-normal`, `--ease`)  |
@@ -70,13 +70,13 @@ Only three. No extra-small, no extra-large.
 
 | Size   | Height            | Horizontal padding | Font size        | Use                          |
 | ------ | ----------------- | ------------------ | ---------------- | ---------------------------- |
-| Small  | 40px              | `--space-16`       | `--text-small`   | Compact UI, table rows       |
-| Medium | 48px (`--button-height`) | `--space-24` | `--text-body`    | Default for most actions     |
-| Large  | 56px              | `--space-32`       | `--text-body`    | Hero / primary CTAs          |
+| Small  | 32px (`--space-32`) | `--space-12`     | `--text-small`   | Compact UI, table rows       |
+| Medium | 40px (`--button-height`) | `--space-16` | `--text-small`   | Default for most actions     |
+| Large  | 48px (`--space-48`) | `--space-20`      | `--text-body`    | Hero / primary CTAs          |
 
-- Medium is the default.
-- Icon-Only buttons are square at the same height as their size (e.g. 48×48 at
-  Medium) and keep the 12px radius.
+- Medium is the default. The scale is intentionally compact and minimal.
+- Icon-Only buttons are square at the same height as their size (e.g. 40×40 at
+  Medium) and keep the 6px (`--radius-sm`) radius.
 
 ---
 

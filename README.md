@@ -6,7 +6,7 @@ resources.
 ## Status
 
 - **Milestone 1 — Foundation:** ✅ Complete (`v0.1.0`)
-- **Milestone 2 — Core UI Components:** ✅ Complete (`v0.2.0`)
+- **Milestone 2 — Core UI Components:** ✅ Complete (`v0.2.0`, refined in `v0.2.1`)
 - **Milestone 3 — Layout Components:** 🔄 Next (→ `v0.3.0`)
 
 ## Technology
