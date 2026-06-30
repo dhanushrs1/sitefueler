@@ -1,5 +1,13 @@
 # Contributing to SiteFueler
 
+## Principles
+
+- **Prefer stability over speed.** When choosing between shipping a feature
+  quickly and implementing it in a way that's reusable, documented, and
+  maintainable, choose the latter. (See `docs/meetings/0003-principles.md`.)
+- **Every feature follows the full lifecycle:** Specification → Implementation →
+  Review → Merge → Release Notes → Tag. No shortcuts.
+
 ## Branching model
 
 We use a simple, single-developer-friendly flow:

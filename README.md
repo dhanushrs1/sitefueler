@@ -30,9 +30,12 @@ see [`LICENSE`](LICENSE). The repository is private during active development.
 - [`docs/design-system.md`](docs/design-system.md) — global visual rules and tokens
 - [`docs/components/`](docs/components) — per-component specifications
 - [`docs/architecture/`](docs/architecture) — how the system works
+- [`docs/meetings/`](docs/meetings) — Architecture Decision Records (ADRs)
+- [`docs/reviews/`](docs/reviews) — component review records
+- [`docs/releases/`](docs/releases) — release notes
 - [`CHANGELOG.md`](CHANGELOG.md) — release history
-- [`ROADMAP.md`](ROADMAP.md) — planned versions
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — branching, commits, and workflow
+- [`ROADMAP.md`](ROADMAP.md) — milestones and planned versions
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — principles, branching, commits, workflow
 
 ## Project structure
 
