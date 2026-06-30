@@ -127,9 +127,14 @@
 
 /* --------------------------------------------------------------------------
    Disclosure (manual setup key — collapsed by default)
+   --------------------------------------------------------------------------
+   Centered to group visually with the QR card above it. text-align cascades
+   to the inline-flex summary, the hint paragraph (text inheritance), and the
+   secret block (which is text-aligned anyway).
    -------------------------------------------------------------------------- */
 .tfa-disclosure {
     margin-top: var(--space-16);
+    text-align: center;
 }
 .tfa-disclosure__summary {
     list-style: none;
