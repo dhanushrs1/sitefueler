@@ -5,6 +5,12 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- **Assets missing behind a proxy/tunnel (ngrok):** trust forwarded headers
+  (`X-Forwarded-Proto`/`Host`) so `asset()`/`url()` generate correct
+  `https://<host>/…` URLs when tunnelled (no more mixed-content/unstyled pages).
+  Local `http://127.0.0.1:8000` access is unchanged.
+
 ## [0.3.1] — Shell & Button Polish
 
 ### Added
