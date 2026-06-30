@@ -15,6 +15,10 @@ This project follows [Semantic Versioning](https://semver.org/).
   (success/warning/error/disabled/readonly), label/hint/error, prefix/suffix
   icons, and `group` layouts (single / two-column / inline); `components/form.css`.
 - Form review record (`docs/reviews/0002-form-review.md`).
+- **Badge component** — single parameter-driven component with five fixed
+  variants (New, Sale, Best Seller, Featured, Out of Stock), pill shape, optional
+  icon slot, default labels; `components/badge.css`.
+- Badge review record (`docs/reviews/0003-badge-review.md`).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-

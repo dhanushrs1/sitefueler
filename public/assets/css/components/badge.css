@@ -1,4 +1,57 @@
 /* ==========================================================================
    SiteFueler — Badge Component (components/badge.css)
+   --------------------------------------------------------------------------
    Implements docs/components/badge.md v1.0.
+   Fixed labels: New, Sale, Best Seller, Featured, Out of Stock.
+   Pill shape, caption text, optional leading icon. Non-interactive.
+   Tokens only.
    ========================================================================== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-12);
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.badge svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Variants (badge.md §3)
+   New → Info | Sale → Danger | Best Seller / Featured → Primary
+   Out of Stock → neutral/muted
+   -------------------------------------------------------------------------- */
+
+/* Soft-tinted */
+.badge--new {
+    background-color: var(--color-info-soft);
+    color: var(--color-info);
+}
+.badge--sale {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+/* Solid emphasis */
+.badge--best-seller,
+.badge--featured {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* Neutral */
+.badge--out-of-stock {
+    background-color: var(--color-gray-100);
+    color: var(--color-muted);
+}
