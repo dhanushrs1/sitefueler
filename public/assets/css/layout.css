@@ -1,0 +1,214 @@
+/* ==========================================================================
+   SiteFueler — Layout (layout.css)
+   --------------------------------------------------------------------------
+   Responsibility: STRUCTURE, not appearance.
+   How pages are built — reset, base elements, container, section, wrapper,
+   grid, and responsive layout behavior.
+   No navbar. No footer. No buttons. Those live in components.css.
+   All values come from variables.css — never hardcode.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS Reset  (minimal — essentials only)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* ==========================================================================
+   2. HTML & Body
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-body);
+    font-family: var(--font-family-base);
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================================
+   3. Typography Defaults
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-heading);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); font-weight: var(--font-weight-semibold); }
+h4 { font-size: var(--text-h4); font-weight: var(--font-weight-semibold); }
+h5 { font-size: var(--text-h5); font-weight: var(--font-weight-semibold); }
+h6 { font-size: var(--text-body); font-weight: var(--font-weight-semibold); }
+
+p {
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+}
+
+ul,
+ol {
+    padding-left: var(--space-20);
+    line-height: var(--leading-normal);
+}
+
+strong {
+    font-weight: var(--font-weight-semibold);
+}
+
+em {
+    font-style: italic;
+}
+
+small {
+    font-size: var(--text-small);
+}
+
+
+/* ==========================================================================
+   4. Images
+   ========================================================================== */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ==========================================================================
+   5. Links
+   ========================================================================== */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease);
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+
+/* ==========================================================================
+   6. Container  (one official container)
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding-inline: var(--space-24);
+}
+
+
+/* ==========================================================================
+   7. Section  (base vertical rhythm)
+   ========================================================================== */
+.section {
+    padding-block: var(--section-gap);
+}
+
+
+/* ==========================================================================
+   8. Main Content Wrapper
+   ========================================================================== */
+.main-content {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==========================================================================
+   9. Grid System  (one reusable grid)
+   --------------------------------------------------------------------------
+   Mobile-first: 1 column, scaling up with the design-system breakpoints.
+   Tablet → 2, Laptop → 3, Desktop → 4  (design-system.md §8).
+   ========================================================================== */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--card-gap);
+}
+
+
+/* ==========================================================================
+   10. Responsive Layout
+   --------------------------------------------------------------------------
+   Layout behavior only. No component responsiveness here.
+   Breakpoints: 640, 768, 1024, 1280, 1536  (design-system.md §9).
+   ========================================================================== */
+
+/* Tablet — 2 columns */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding-inline: var(--space-32);
+    }
+}
+
+/* Laptop — 3 columns */
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop — 4 columns */
+@media (min-width: 1280px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

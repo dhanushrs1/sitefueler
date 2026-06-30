@@ -1,0 +1,375 @@
+/* ==========================================================================
+   SiteFueler — Utilities (utilities.css)
+   --------------------------------------------------------------------------
+   SiteFueler's own mini utility framework. Generic, reusable helpers only.
+   No business logic, no component or page-specific names.
+   All values come from variables.css — never hardcode.
+   Cascade: loaded after layout.css so utilities can override base structure.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Display
+   ========================================================================== */
+.d-block          { display: block; }
+.d-inline         { display: inline; }
+.d-inline-block   { display: inline-block; }
+.d-flex           { display: flex; }
+.d-grid           { display: grid; }
+.d-none           { display: none; }
+
+
+/* ==========================================================================
+   2. Flex
+   ========================================================================== */
+.flex-row         { flex-direction: row; }
+.flex-column      { flex-direction: column; }
+.flex-wrap        { flex-wrap: wrap; }
+
+
+/* ==========================================================================
+   3. Alignment
+   ========================================================================== */
+.justify-start    { justify-content: flex-start; }
+.justify-center   { justify-content: center; }
+.justify-end      { justify-content: flex-end; }
+.justify-between  { justify-content: space-between; }
+
+.align-start      { align-items: flex-start; }
+.align-center     { align-items: center; }
+.align-end        { align-items: flex-end; }
+
+
+/* ==========================================================================
+   4. Width & Height
+   ========================================================================== */
+.w-100            { width: 100%; }
+.w-auto           { width: auto; }
+.h-100            { height: 100%; }
+.h-auto           { height: auto; }
+
+
+/* ==========================================================================
+   5. Margin  (generated from the spacing scale — §7)
+   ========================================================================== */
+.m-0   { margin: 0; }
+.m-4   { margin: var(--space-4); }
+.m-8   { margin: var(--space-8); }
+.m-12  { margin: var(--space-12); }
+.m-16  { margin: var(--space-16); }
+.m-20  { margin: var(--space-20); }
+.m-24  { margin: var(--space-24); }
+.m-32  { margin: var(--space-32); }
+.m-40  { margin: var(--space-40); }
+.m-48  { margin: var(--space-48); }
+.m-64  { margin: var(--space-64); }
+.m-80  { margin: var(--space-80); }
+.m-96  { margin: var(--space-96); }
+.m-120 { margin: var(--space-120); }
+
+.mt-0   { margin-top: 0; }
+.mt-4   { margin-top: var(--space-4); }
+.mt-8   { margin-top: var(--space-8); }
+.mt-12  { margin-top: var(--space-12); }
+.mt-16  { margin-top: var(--space-16); }
+.mt-20  { margin-top: var(--space-20); }
+.mt-24  { margin-top: var(--space-24); }
+.mt-32  { margin-top: var(--space-32); }
+.mt-40  { margin-top: var(--space-40); }
+.mt-48  { margin-top: var(--space-48); }
+.mt-64  { margin-top: var(--space-64); }
+.mt-80  { margin-top: var(--space-80); }
+.mt-96  { margin-top: var(--space-96); }
+.mt-120 { margin-top: var(--space-120); }
+
+.mb-0   { margin-bottom: 0; }
+.mb-4   { margin-bottom: var(--space-4); }
+.mb-8   { margin-bottom: var(--space-8); }
+.mb-12  { margin-bottom: var(--space-12); }
+.mb-16  { margin-bottom: var(--space-16); }
+.mb-20  { margin-bottom: var(--space-20); }
+.mb-24  { margin-bottom: var(--space-24); }
+.mb-32  { margin-bottom: var(--space-32); }
+.mb-40  { margin-bottom: var(--space-40); }
+.mb-48  { margin-bottom: var(--space-48); }
+.mb-64  { margin-bottom: var(--space-64); }
+.mb-80  { margin-bottom: var(--space-80); }
+.mb-96  { margin-bottom: var(--space-96); }
+.mb-120 { margin-bottom: var(--space-120); }
+
+.ml-0   { margin-left: 0; }
+.ml-4   { margin-left: var(--space-4); }
+.ml-8   { margin-left: var(--space-8); }
+.ml-12  { margin-left: var(--space-12); }
+.ml-16  { margin-left: var(--space-16); }
+.ml-20  { margin-left: var(--space-20); }
+.ml-24  { margin-left: var(--space-24); }
+.ml-32  { margin-left: var(--space-32); }
+.ml-40  { margin-left: var(--space-40); }
+.ml-48  { margin-left: var(--space-48); }
+.ml-64  { margin-left: var(--space-64); }
+.ml-80  { margin-left: var(--space-80); }
+.ml-96  { margin-left: var(--space-96); }
+.ml-120 { margin-left: var(--space-120); }
+
+.mr-0   { margin-right: 0; }
+.mr-4   { margin-right: var(--space-4); }
+.mr-8   { margin-right: var(--space-8); }
+.mr-12  { margin-right: var(--space-12); }
+.mr-16  { margin-right: var(--space-16); }
+.mr-20  { margin-right: var(--space-20); }
+.mr-24  { margin-right: var(--space-24); }
+.mr-32  { margin-right: var(--space-32); }
+.mr-40  { margin-right: var(--space-40); }
+.mr-48  { margin-right: var(--space-48); }
+.mr-64  { margin-right: var(--space-64); }
+.mr-80  { margin-right: var(--space-80); }
+.mr-96  { margin-right: var(--space-96); }
+.mr-120 { margin-right: var(--space-120); }
+
+.mx-0   { margin-inline: 0; }
+.mx-4   { margin-inline: var(--space-4); }
+.mx-8   { margin-inline: var(--space-8); }
+.mx-12  { margin-inline: var(--space-12); }
+.mx-16  { margin-inline: var(--space-16); }
+.mx-20  { margin-inline: var(--space-20); }
+.mx-24  { margin-inline: var(--space-24); }
+.mx-32  { margin-inline: var(--space-32); }
+.mx-40  { margin-inline: var(--space-40); }
+.mx-48  { margin-inline: var(--space-48); }
+.mx-64  { margin-inline: var(--space-64); }
+.mx-80  { margin-inline: var(--space-80); }
+.mx-96  { margin-inline: var(--space-96); }
+.mx-120 { margin-inline: var(--space-120); }
+.mx-auto { margin-inline: auto; }
+
+.my-0   { margin-block: 0; }
+.my-4   { margin-block: var(--space-4); }
+.my-8   { margin-block: var(--space-8); }
+.my-12  { margin-block: var(--space-12); }
+.my-16  { margin-block: var(--space-16); }
+.my-20  { margin-block: var(--space-20); }
+.my-24  { margin-block: var(--space-24); }
+.my-32  { margin-block: var(--space-32); }
+.my-40  { margin-block: var(--space-40); }
+.my-48  { margin-block: var(--space-48); }
+.my-64  { margin-block: var(--space-64); }
+.my-80  { margin-block: var(--space-80); }
+.my-96  { margin-block: var(--space-96); }
+.my-120 { margin-block: var(--space-120); }
+
+
+/* ==========================================================================
+   6. Padding  (generated from the spacing scale — §7)
+   ========================================================================== */
+.p-0   { padding: 0; }
+.p-4   { padding: var(--space-4); }
+.p-8   { padding: var(--space-8); }
+.p-12  { padding: var(--space-12); }
+.p-16  { padding: var(--space-16); }
+.p-20  { padding: var(--space-20); }
+.p-24  { padding: var(--space-24); }
+.p-32  { padding: var(--space-32); }
+.p-40  { padding: var(--space-40); }
+.p-48  { padding: var(--space-48); }
+.p-64  { padding: var(--space-64); }
+.p-80  { padding: var(--space-80); }
+.p-96  { padding: var(--space-96); }
+.p-120 { padding: var(--space-120); }
+
+.pt-0   { padding-top: 0; }
+.pt-4   { padding-top: var(--space-4); }
+.pt-8   { padding-top: var(--space-8); }
+.pt-12  { padding-top: var(--space-12); }
+.pt-16  { padding-top: var(--space-16); }
+.pt-20  { padding-top: var(--space-20); }
+.pt-24  { padding-top: var(--space-24); }
+.pt-32  { padding-top: var(--space-32); }
+.pt-40  { padding-top: var(--space-40); }
+.pt-48  { padding-top: var(--space-48); }
+.pt-64  { padding-top: var(--space-64); }
+.pt-80  { padding-top: var(--space-80); }
+.pt-96  { padding-top: var(--space-96); }
+.pt-120 { padding-top: var(--space-120); }
+
+.pb-0   { padding-bottom: 0; }
+.pb-4   { padding-bottom: var(--space-4); }
+.pb-8   { padding-bottom: var(--space-8); }
+.pb-12  { padding-bottom: var(--space-12); }
+.pb-16  { padding-bottom: var(--space-16); }
+.pb-20  { padding-bottom: var(--space-20); }
+.pb-24  { padding-bottom: var(--space-24); }
+.pb-32  { padding-bottom: var(--space-32); }
+.pb-40  { padding-bottom: var(--space-40); }
+.pb-48  { padding-bottom: var(--space-48); }
+.pb-64  { padding-bottom: var(--space-64); }
+.pb-80  { padding-bottom: var(--space-80); }
+.pb-96  { padding-bottom: var(--space-96); }
+.pb-120 { padding-bottom: var(--space-120); }
+
+.pl-0   { padding-left: 0; }
+.pl-4   { padding-left: var(--space-4); }
+.pl-8   { padding-left: var(--space-8); }
+.pl-12  { padding-left: var(--space-12); }
+.pl-16  { padding-left: var(--space-16); }
+.pl-20  { padding-left: var(--space-20); }
+.pl-24  { padding-left: var(--space-24); }
+.pl-32  { padding-left: var(--space-32); }
+.pl-40  { padding-left: var(--space-40); }
+.pl-48  { padding-left: var(--space-48); }
+.pl-64  { padding-left: var(--space-64); }
+.pl-80  { padding-left: var(--space-80); }
+.pl-96  { padding-left: var(--space-96); }
+.pl-120 { padding-left: var(--space-120); }
+
+.pr-0   { padding-right: 0; }
+.pr-4   { padding-right: var(--space-4); }
+.pr-8   { padding-right: var(--space-8); }
+.pr-12  { padding-right: var(--space-12); }
+.pr-16  { padding-right: var(--space-16); }
+.pr-20  { padding-right: var(--space-20); }
+.pr-24  { padding-right: var(--space-24); }
+.pr-32  { padding-right: var(--space-32); }
+.pr-40  { padding-right: var(--space-40); }
+.pr-48  { padding-right: var(--space-48); }
+.pr-64  { padding-right: var(--space-64); }
+.pr-80  { padding-right: var(--space-80); }
+.pr-96  { padding-right: var(--space-96); }
+.pr-120 { padding-right: var(--space-120); }
+
+.px-0   { padding-inline: 0; }
+.px-4   { padding-inline: var(--space-4); }
+.px-8   { padding-inline: var(--space-8); }
+.px-12  { padding-inline: var(--space-12); }
+.px-16  { padding-inline: var(--space-16); }
+.px-20  { padding-inline: var(--space-20); }
+.px-24  { padding-inline: var(--space-24); }
+.px-32  { padding-inline: var(--space-32); }
+.px-40  { padding-inline: var(--space-40); }
+.px-48  { padding-inline: var(--space-48); }
+.px-64  { padding-inline: var(--space-64); }
+.px-80  { padding-inline: var(--space-80); }
+.px-96  { padding-inline: var(--space-96); }
+.px-120 { padding-inline: var(--space-120); }
+
+.py-0   { padding-block: 0; }
+.py-4   { padding-block: var(--space-4); }
+.py-8   { padding-block: var(--space-8); }
+.py-12  { padding-block: var(--space-12); }
+.py-16  { padding-block: var(--space-16); }
+.py-20  { padding-block: var(--space-20); }
+.py-24  { padding-block: var(--space-24); }
+.py-32  { padding-block: var(--space-32); }
+.py-40  { padding-block: var(--space-40); }
+.py-48  { padding-block: var(--space-48); }
+.py-64  { padding-block: var(--space-64); }
+.py-80  { padding-block: var(--space-80); }
+.py-96  { padding-block: var(--space-96); }
+.py-120 { padding-block: var(--space-120); }
+
+
+/* ==========================================================================
+   7. Gap  (spacing scale only)
+   ========================================================================== */
+.gap-0   { gap: 0; }
+.gap-4   { gap: var(--space-4); }
+.gap-8   { gap: var(--space-8); }
+.gap-12  { gap: var(--space-12); }
+.gap-16  { gap: var(--space-16); }
+.gap-20  { gap: var(--space-20); }
+.gap-24  { gap: var(--space-24); }
+.gap-32  { gap: var(--space-32); }
+.gap-40  { gap: var(--space-40); }
+.gap-48  { gap: var(--space-48); }
+.gap-64  { gap: var(--space-64); }
+.gap-80  { gap: var(--space-80); }
+.gap-96  { gap: var(--space-96); }
+.gap-120 { gap: var(--space-120); }
+
+
+/* ==========================================================================
+   8. Typography Helpers
+   ========================================================================== */
+.text-left        { text-align: left; }
+.text-center      { text-align: center; }
+.text-right       { text-align: right; }
+
+.fw-400           { font-weight: var(--font-weight-regular); }
+.fw-500           { font-weight: var(--font-weight-medium); }
+.fw-600           { font-weight: var(--font-weight-semibold); }
+.fw-700           { font-weight: var(--font-weight-bold); }
+
+.text-uppercase   { text-transform: uppercase; }
+.text-capitalize  { text-transform: capitalize; }
+
+
+/* ==========================================================================
+   9. Colors  (semantic only)
+   ========================================================================== */
+.text-primary     { color: var(--color-primary); }
+.text-heading     { color: var(--color-heading); }
+.text-body        { color: var(--color-body); }
+.text-muted       { color: var(--color-muted); }
+.text-white       { color: var(--color-white); }
+
+
+/* ==========================================================================
+   10. Backgrounds
+   ========================================================================== */
+.bg-primary       { background-color: var(--color-primary); }
+.bg-white         { background-color: var(--color-white); }
+.bg-dark          { background-color: var(--color-dark); }
+
+
+/* ==========================================================================
+   11. Borders
+   ========================================================================== */
+.border           { border: 1px solid var(--color-border); }
+.border-top       { border-top: 1px solid var(--color-border); }
+.border-bottom    { border-bottom: 1px solid var(--color-border); }
+.border-left      { border-left: 1px solid var(--color-border); }
+.border-right     { border-right: 1px solid var(--color-border); }
+
+
+/* ==========================================================================
+   12. Radius
+   ========================================================================== */
+.radius-sm        { border-radius: var(--radius-sm); }
+.radius-md        { border-radius: var(--radius-md); }
+.radius-full      { border-radius: var(--radius-full); }
+
+
+/* ==========================================================================
+   13. Shadows
+   ========================================================================== */
+.shadow-sm        { box-shadow: var(--shadow-sm); }
+.shadow-md        { box-shadow: var(--shadow-md); }
+.shadow-lg        { box-shadow: var(--shadow-lg); }
+
+
+/* ==========================================================================
+   14. Position
+   ========================================================================== */
+.relative         { position: relative; }
+.absolute         { position: absolute; }
+.fixed            { position: fixed; }
+.sticky           { position: sticky; }
+
+
+/* ==========================================================================
+   15. Overflow
+   ========================================================================== */
+.overflow-hidden  { overflow: hidden; }
+
+
+/* ==========================================================================
+   16. Cursor
+   ========================================================================== */
+.cursor-pointer   { cursor: pointer; }
+
+
+/* ==========================================================================
+   17. Visibility
+   ========================================================================== */
+.visible          { visibility: visible; }
+.invisible        { visibility: hidden; }

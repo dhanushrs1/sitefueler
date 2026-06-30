@@ -1,0 +1,16 @@
+/* ==========================================================================
+   SiteFueler — Components (components.css)
+   --------------------------------------------------------------------------
+   Aggregator only. Each component lives in its own file under components/.
+   Imported in build order (dependencies first). No styles written here.
+   ========================================================================== */
+
+@import "components/button.css";
+@import "components/form.css";
+@import "components/badge.css";
+@import "components/alert.css";
+@import "components/card.css";
+@import "components/table.css";
+@import "components/modal.css";
+@import "components/header.css";
+@import "components/footer.css";

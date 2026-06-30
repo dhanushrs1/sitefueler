@@ -1,0 +1,58 @@
+# SiteFueler
+
+Modern Laravel platform for WordPress templates, plugins, services, and digital
+resources.
+
+## Status
+
+- **Version:** 0.1.0
+- **Current phase:** Component Implementation
+
+## Technology
+
+- Laravel 13
+- PHP 8.4
+- MySQL
+- Blade
+- Vanilla CSS
+- Vanilla JavaScript
+
+No Tailwind, Bootstrap, jQuery, React, Vue, Alpine, or Sass — by design, for a
+simple, fast, and easy-to-deploy stack (Apache / shared hosting).
+
+## Documentation
+
+- [`docs/design-system.md`](docs/design-system.md) — global visual rules and tokens
+- [`docs/components/`](docs/components) — per-component specifications
+- [`docs/architecture/`](docs/architecture) — how the system works
+- [`CHANGELOG.md`](CHANGELOG.md) — release history
+- [`ROADMAP.md`](ROADMAP.md) — planned versions
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — branching, commits, and workflow
+
+## Project structure
+
+```
+app/            Application code (Http, Models, Services, Repositories, ...)
+docs/           Design system, component specs, architecture
+public/assets/  Static CSS, JS, images, icons, fonts (served directly)
+resources/views Blade layouts, partials, pages, components
+routes/         Route definitions
+```
+
+## Getting started (local)
+
+```bash
+# 1. Configure environment
+cp .env.example .env   # then set DB_* values (MySQL: sitefueler_db)
+
+# 2. App key (if needed)
+php artisan key:generate
+
+# 3. Migrate
+php artisan migrate
+
+# 4. Run
+php artisan serve
+```
+
+Open http://127.0.0.1:8000.

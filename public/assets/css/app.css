@@ -1,0 +1,15 @@
+/* ==========================================================================
+   SiteFueler — Main Stylesheet (app.css)
+   --------------------------------------------------------------------------
+   This file only imports the design-system layers in the required order.
+   No styles are written directly here.
+
+       variables.css  →  layout.css  →  utilities.css  →  components.css
+
+   Utilities load after layout so they can override base structure.
+   ========================================================================== */
+
+@import "variables.css";
+@import "layout.css";
+@import "utilities.css";
+@import "components.css";
