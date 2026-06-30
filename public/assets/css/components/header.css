@@ -1,9 +1,9 @@
 /* ==========================================================================
    SiteFueler — Header Component (components/header.css)
    --------------------------------------------------------------------------
-   Implements docs/components/header.md v1.0.
-   Sticky, 80px, white, bottom border. Logo / Nav / Actions.
-   Composes Button + Form (search). Tokens only.
+   Clean, slim marketing header (Laravel-style): logo + left nav + right
+   actions. White background, subtle bottom border, light-weight nav text.
+   No search. Composes Button. Tokens only.
    ========================================================================== */
 
 .site-header {
@@ -17,57 +17,46 @@
 .site-header__inner {
     display: flex;
     align-items: center;
-    gap: var(--space-24);
-    height: var(--navbar-height);     /* 80px */
+    gap: var(--space-32);
+    height: var(--navbar-height);     /* 64px — slim */
 }
 
 .site-header__logo {
-    font-size: var(--text-h5);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-heading);
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
     flex-shrink: 0;
+    text-decoration: none;
 }
-.site-header__logo:hover { color: var(--color-heading); }
 
-/* Primary navigation (desktop) */
+/* Primary navigation — left-aligned, light weight */
 .site-nav {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
-    flex: 1 1 auto;
-    justify-content: center;
+    gap: var(--space-4);
 }
 .site-nav__link {
     padding: var(--space-8) var(--space-12);
     color: var(--color-body);
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     font-weight: var(--font-weight-medium);
     border-radius: var(--radius-sm);
     text-decoration: none;
-    transition: color var(--duration-normal) var(--ease),
-                background-color var(--duration-normal) var(--ease);
+    transition: color var(--duration-normal) var(--ease);
 }
 .site-nav__link:hover {
     color: var(--color-primary);
-    background-color: var(--color-gray-50);
 }
 .site-nav__link.is-active {
-    color: var(--color-primary);
+    color: var(--color-heading);
 }
 
-/* Right-side actions */
+/* Right-side actions (pushed to the far right) */
 .site-header__actions {
     display: flex;
     align-items: center;
     gap: var(--space-8);
     flex-shrink: 0;
     margin-left: auto;
-}
-.site-header__cta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-8);
 }
 
 /* Hamburger (mobile only) */
@@ -96,15 +85,14 @@
     border-top: 1px solid var(--color-border);
 }
 .site-header__mobile.is-open { display: flex; }
-.site-header__mobile .search-bar .field { margin-bottom: var(--space-8); }
 .site-header__mobile .site-nav {
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
     gap: var(--space-4);
 }
 .site-header__mobile .site-nav__link {
     padding: var(--space-12) var(--space-16);
+    font-size: var(--text-body);
 }
 .site-header__mobile-cta {
     display: flex;
@@ -114,10 +102,13 @@
 }
 
 /* --------------------------------------------------------------------------
-   Responsive: below 1024px collapse nav + CTAs behind the hamburger
+   Responsive: below 1024px collapse nav + actions behind the hamburger
    -------------------------------------------------------------------------- */
 @media (max-width: 1023px) {
     .site-nav { display: none; }
-    .site-header__cta { display: none; }
+    .site-header__actions { display: none; }
     .site-header__burger { display: inline-flex; }
+    .site-header__inner { gap: var(--space-16); }
+    /* keep the logo centered between burger and the (hidden) actions */
+    .site-header__logo { margin-left: auto; margin-right: auto; }
 }

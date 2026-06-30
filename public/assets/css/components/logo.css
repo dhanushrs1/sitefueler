@@ -1,0 +1,26 @@
+/* ==========================================================================
+   SiteFueler — Logo (components/logo.css)
+   --------------------------------------------------------------------------
+   Two-tone wordmark: the wordmark follows `currentColor`, the mark stays brand
+   orange. Set `color` on the logo (or use --light on dark backgrounds).
+   ========================================================================== */
+
+.site-logo {
+    display: block;
+    height: 24px;
+    width: auto;
+    color: var(--color-heading);
+}
+
+/* Wordmark paths follow currentColor; the orange mark keeps its brand color. */
+.site-logo path {
+    fill: currentColor;
+}
+.site-logo path[fill="#ff5e00"] {
+    fill: var(--color-primary);
+}
+
+/* On dark surfaces (footer) */
+.site-logo--light {
+    color: var(--color-white);
+}

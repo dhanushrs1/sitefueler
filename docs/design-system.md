@@ -384,7 +384,7 @@ experience across the site.
 
 | Property      | Value |
 | ------------- | ----- |
-| Height        | 80px  |
+| Height        | 64px  |
 | Sticky        | Yes   |
 | Background    | White |
 | Border Bottom | Yes (Border color) |

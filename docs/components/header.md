@@ -21,15 +21,15 @@ standard container.
 
 | Region | Position | Contents                                        |
 | ------ | -------- | ----------------------------------------------- |
-| Logo   | Left     | Text logo: **SiteFueler**                       |
-| Nav    | Center   | Primary navigation links                        |
-| Actions| Right    | Search, Login, Get Started                      |
+| Logo   | Left     | SVG wordmark logo                               |
+| Nav    | Left     | Primary navigation links (next to the logo)     |
+| Actions| Right    | Login, Get Started                              |
 
 **Layout tokens:**
 
 | Property      | Value                          |
 | ------------- | ------------------------------ |
-| Height        | 80px (`--navbar-height`)       |
+| Height        | 64px (`--navbar-height`)       |
 | Container     | 1320px (`--content-width`)     |
 | Background    | White (`--color-background`)   |
 | Bottom border | 1px solid `--color-border`     |
@@ -44,16 +44,17 @@ standard container.
 - Blog
 - Contact
 
-Nothing more for v1.0.
+Nothing more for v1.0. Nav links use a light weight (medium), not bold.
 
 **Right-side actions:**
 
-- **Search** — simple search icon (Lucide).
-- **Login** — Ghost button.
-- **Get Started** — Primary button.
+- **Login** — Ghost button (small).
+- **Get Started** — Primary button (small).
 
-**Logo:** Text logo reading "SiteFueler" for now. Will be replaced with the real
-SVG in a later version.
+No search in the header (a reusable, Form-based Search Bar exists separately for
+search/results pages).
+
+**Logo:** SVG wordmark (two-tone — wordmark in text color, mark in brand orange).
 
 ---
 
@@ -62,7 +63,7 @@ SVG in a later version.
 | Behavior      | v1.0  | Notes                                            |
 | ------------- | ----- | ------------------------------------------------ |
 | Sticky        | Yes   | Stays pinned to the top while scrolling          |
-| Shrink        | No    | Height stays fixed at 80px                       |
+| Shrink        | No    | Height stays fixed at 64px                       |
 | Transparent   | No    | Always solid white background                    |
 | Shadow        | No    | Depth comes from the bottom border only          |
 | Border        | Yes   | 1px bottom border, `--color-border`              |

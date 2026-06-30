@@ -8,11 +8,13 @@
         <div class="site-footer__cols">
             {{-- Brand column --}}
             <div class="site-footer__brand">
-                <p class="site-footer__brand-name">SiteFueler</p>
+                <a href="/" class="site-footer__logo" aria-label="SiteFueler home">
+                    <x-logo tone="light" />
+                </a>
                 <p class="site-footer__desc">
                     Modern templates, plugins, and services for WordPress and beyond.
                 </p>
-                <x-button variant="primary" href="/get-started">Get Started</x-button>
+                <x-button variant="primary" size="sm" href="/get-started">Get Started</x-button>
             </div>
 
             {{-- Link columns (from config) --}}
