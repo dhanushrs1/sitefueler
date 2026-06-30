@@ -116,27 +116,48 @@
     }
 
     /* ----------------------------------------------------------------------
-       Header mobile navigation toggle
-       [data-nav-toggle] opens/closes #site-mobile-nav and keeps
-       aria-expanded in sync.
+       Header off-canvas drawer (mobile)
+       [data-nav-open] opens #site-mobile-nav; [data-nav-close] (X / backdrop)
+       closes it. Escape closes; background scroll is locked while open.
        ---------------------------------------------------------------------- */
     function initHeaderNav() {
-        var toggle = document.querySelector('[data-nav-toggle]');
-        if (!toggle) return;
-        var panelId = toggle.getAttribute('aria-controls');
-        var panel = panelId ? document.getElementById(panelId) : null;
-        if (!panel) return;
+        var opener = document.querySelector('[data-nav-open]');
+        var drawer = document.getElementById('site-mobile-nav');
+        if (!opener || !drawer) return;
 
-        toggle.addEventListener('click', function () {
-            var isOpen = panel.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        var panel = drawer.querySelector('.nav-drawer__panel');
+        var closeBtn = drawer.querySelector('[data-nav-close].nav-drawer__close, .nav-drawer__close');
+
+        function openDrawer() {
+            drawer.classList.add('is-open');
+            document.body.classList.add('nav-open');
+            opener.setAttribute('aria-expanded', 'true');
+            if (closeBtn) closeBtn.focus();
+        }
+        function closeDrawer() {
+            drawer.classList.remove('is-open');
+            document.body.classList.remove('nav-open');
+            opener.setAttribute('aria-expanded', 'false');
+            opener.focus();
+        }
+
+        opener.addEventListener('click', openDrawer);
+
+        drawer.addEventListener('click', function (event) {
+            if (event.target.closest('[data-nav-close]')) {
+                closeDrawer();
+            }
+            // Close after following a nav link
+            if (event.target.closest('.nav-drawer__nav a')) {
+                drawer.classList.remove('is-open');
+                document.body.classList.remove('nav-open');
+                opener.setAttribute('aria-expanded', 'false');
+            }
         });
 
-        // Close the panel when a link inside it is clicked
-        panel.addEventListener('click', function (event) {
-            if (event.target.closest('a')) {
-                panel.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && drawer.classList.contains('is-open')) {
+                closeDrawer();
             }
         });
     }

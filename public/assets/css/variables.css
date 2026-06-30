@@ -56,15 +56,15 @@
     /* ----------------------------------------------------------------------
        2. Typography — Family & Weights  (design-system.md §3)
        ---------------------------------------------------------------------- */
-    --font-family-base:     'Be Vietnam Pro', -apple-system, BlinkMacSystemFont,
+    --font-family-base:     'Instrument Sans', -apple-system, BlinkMacSystemFont,
                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-    --font-weight-light:        300;
+    --font-weight-light:        400;  /* Instrument Sans starts at 400 */
     --font-weight-regular:      400;
     --font-weight-medium:       500;
     --font-weight-semibold:     600;
     --font-weight-bold:         700;
-    --font-weight-extrabold:    800;
+    --font-weight-extrabold:    700;  /* Instrument Sans tops out at 700 */
 
     /* ----------------------------------------------------------------------
        3. Font Sizes  (design-system.md §3)

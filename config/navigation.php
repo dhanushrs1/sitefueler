@@ -25,15 +25,17 @@ return [
 
     // Footer link columns
     'footer' => [
-        'Product' => [
+        'Best Selling' => [
             ['title' => 'Templates', 'url' => '/templates'],
             ['title' => 'Plugins',   'url' => '/plugins'],
             ['title' => 'Services',  'url' => '/services'],
+            ['title' => 'Themes',    'url' => '/templates'],
         ],
-        'Company' => [
-            ['title' => 'Blog',     'url' => '/blog'],
-            ['title' => 'Contact',  'url' => '/contact'],
-            ['title' => 'About',    'url' => '/about'],
+        'Useful Links' => [
+            ['title' => 'Home',          'url' => '/'],
+            ['title' => 'About',         'url' => '/about'],
+            ['title' => 'Contact',       'url' => '/contact'],
+            ['title' => 'Terms & Conditions', 'url' => '/terms'],
         ],
     ],
 

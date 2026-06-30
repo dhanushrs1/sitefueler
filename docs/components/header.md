@@ -48,6 +48,7 @@ Nothing more for v1.0. Nav links use a light weight (medium), not bold.
 
 **Right-side actions:**
 
+- **Cart** — stroked icon link (placeholder for future cart), visible at all sizes.
 - **Login** — Ghost button (small).
 - **Get Started** — Primary button (small).
 
@@ -81,13 +82,13 @@ search/results pages).
 
 | Breakpoint        | Header layout                                            |
 | ----------------- | -------------------------------------------------------- |
-| Desktop (≥1280)   | Full navigation visible; logo left, nav center, actions right |
-| Tablet (≥768)     | Navigation collapsed; condensed actions                  |
-| Mobile (<768)     | Hamburger (left), Logo (center), Search (right)          |
+| Desktop (≥1024)   | Logo left, nav next to it, actions right (cart, Login, Get Started) |
+| < 1024 (tablet/mobile) | Logo left, cart + hamburger right; nav + CTAs move into an off-canvas drawer |
 
-- On mobile, the primary links move behind a hamburger menu.
-- The mobile bar shows three elements only: **Hamburger · Logo · Search**.
-- Login / Get Started move into the opened mobile menu.
+- Below 1024px the primary links and CTAs move into a **right-side off-canvas
+  drawer** that slides in from the right and closes via the X, the backdrop, or
+  Escape (background scroll locked while open).
+- The cart icon stays visible in the top bar at all sizes.
 - Breakpoints follow `design-system.md` §9 (640, 768, 1024, 1280, 1536).
 
 ---
