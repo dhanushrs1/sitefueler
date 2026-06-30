@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Middleware\EnforceAdminSessionTimeout;
+use App\Http\Middleware\EnsureTwoFactorEnrolled;
+use App\Http\Middleware\EnsureTwoFactorVerified;
+use App\Http\Middleware\EnsureUserHasRole;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -25,7 +29,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Route middleware aliases
         $middleware->alias([
-            'role' => \App\Http\Middleware\EnsureUserHasRole::class,
+            'role' => EnsureUserHasRole::class,
+            '2fa.enrolled' => EnsureTwoFactorEnrolled::class,
+            '2fa.verified' => EnsureTwoFactorVerified::class,
+            'admin.timeout' => EnforceAdminSessionTimeout::class,
         ]);
 
         // Send unauthenticated users to the unified login page

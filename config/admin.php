@@ -21,6 +21,7 @@ return [
         ['title' => 'Blog',      'route' => null, 'icon' => 'blog'],
         ['title' => 'Customers', 'route' => null, 'icon' => 'customers'],
         ['title' => 'Orders',    'route' => null, 'icon' => 'orders'],
+        ['title' => 'Security',  'route' => 'admin.security', 'icon' => 'shield'],
         ['title' => 'Settings',  'route' => null, 'icon' => 'settings'],
     ],
 

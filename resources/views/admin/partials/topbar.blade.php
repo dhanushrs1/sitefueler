@@ -31,8 +31,8 @@
                 <a class="admin-dropdown__item" href="{{ route('admin.profile') }}">
                     <x-admin.icon name="user" /> <span>Profile</span>
                 </a>
-                <a class="admin-dropdown__item" href="#">
-                    <x-admin.icon name="settings" /> <span>Settings</span>
+                <a class="admin-dropdown__item" href="{{ route('admin.security') }}">
+                    <x-admin.icon name="shield" /> <span>Security</span>
                 </a>
                 <div class="admin-dropdown__divider"></div>
                 <form method="post" action="{{ route('logout') }}">
