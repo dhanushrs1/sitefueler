@@ -28,6 +28,10 @@ This project follows [Semantic Versioning](https://semver.org/).
   badge overlay, body, and footer slots; Product/Service/Blog variants inherit it;
   interactive whole-card link with hover lift; `components/card.css`.
 - Card review record (`docs/reviews/0005-card-review.md`).
+- **Table component** — single admin/data table style (`table/table.blade.php`)
+  with semantic markup, scroll wrapper, selection/actions/status support, hover &
+  selected rows, empty and loading states; `components/table.css`.
+- Table review record (`docs/reviews/0006-table-review.md`).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-
