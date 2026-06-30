@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Services\SocialAuthService;
+use Composer\CaBundle\CaBundle;
+use GuzzleHttp\Client;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 use Laravel\Socialite\Facades\Socialite;
 use Throwable;
 
@@ -20,9 +25,22 @@ class SocialiteController extends Controller
     }
 
     /**
+     * Build the provider with an HTTP client that uses a known CA bundle, so
+     * the server-side token exchange verifies SSL correctly on any host
+     * (fixes cURL error 60 on Windows/XAMPP where no CA bundle is configured).
+     */
+    private function provider(string $name)
+    {
+        return Socialite::driver($name)->setHttpClient(new Client([
+            'verify' => CaBundle::getSystemCaRootBundlePath(),
+            'timeout' => 15,
+        ]));
+    }
+
+    /**
      * Redirect to the OAuth provider. Scopes: openid, profile, email only.
      */
-    public function redirect(string $provider): RedirectResponse
+    public function redirect(string $provider, Request $request): RedirectResponse
     {
         abort_unless(in_array($provider, self::SUPPORTED, true), 404);
 
@@ -31,7 +49,10 @@ class SocialiteController extends Controller
                 ->withErrors(['email' => ucfirst($provider) . ' sign-in is not configured yet.']);
         }
 
-        return Socialite::driver($provider)
+        // Remember whether the flow was opened in a popup window.
+        $request->session()->put('oauth_popup', $request->boolean('popup'));
+
+        return $this->provider($provider)
             ->scopes(['openid', 'profile', 'email'])
             ->redirect();
     }
@@ -39,34 +60,59 @@ class SocialiteController extends Controller
     /**
      * Handle the OAuth callback: log in, link, or create a customer.
      */
-    public function callback(string $provider, Request $request): RedirectResponse
+    public function callback(string $provider, Request $request)
     {
         abort_unless(in_array($provider, self::SUPPORTED, true), 404);
 
+        $popup = (bool) $request->session()->pull('oauth_popup', false);
+
         try {
-            $oauth = Socialite::driver($provider)->user();
+            $oauth = $this->provider($provider)->user();
         } catch (Throwable $e) {
-            // Includes the user cancelling consent or an invalid callback.
-            return redirect()->route('login')
-                ->withErrors(['email' => 'Could not sign in with ' . ucfirst($provider) . '. Please try again.']);
+            Log::error('OAuth callback failed', [
+                'provider' => $provider,
+                'message' => $e->getMessage(),
+            ]);
+
+            return $this->fail($request, $popup, 'Could not sign in with ' . ucfirst($provider) . '. Please try again.');
         }
 
         if (! $oauth->getEmail()) {
-            return redirect()->route('login')
-                ->withErrors(['email' => 'Your ' . ucfirst($provider) . ' account did not share an email address.']);
+            return $this->fail($request, $popup, 'Your ' . ucfirst($provider) . ' account did not share an email address.');
         }
 
         $user = $this->social->resolveUser($provider, $oauth);
 
         if (in_array($user->status, ['banned', 'suspended'], true)) {
-            return redirect()->route('login')
-                ->withErrors(['email' => 'This account is not active.']);
+            return $this->fail($request, $popup, 'This account is not active.');
         }
 
         Auth::login($user, true);
         $request->session()->regenerate();
         LoginController::recordLogin($user, $request);
 
-        return redirect()->intended(LoginController::homeFor($user));
+        $target = LoginController::homeFor($user);
+
+        return $popup
+            ? view('auth.oauth-popup', ['payload' => ['status' => 'success', 'redirect' => $target]])
+            : redirect()->intended($target);
+    }
+
+    /**
+     * Failure response — popup posts an error to the opener (which navigates to
+     * /login where the flashed error shows); otherwise a normal redirect.
+     */
+    private function fail(Request $request, bool $popup, string $message)
+    {
+        if (! $popup) {
+            return redirect()->route('login')->withErrors(['email' => $message]);
+        }
+
+        // Flash the error so the opener's /login shows it.
+        $bag = new ViewErrorBag;
+        $bag->put('default', new MessageBag(['email' => [$message]]));
+        $request->session()->flash('errors', $bag);
+
+        return view('auth.oauth-popup', ['payload' => ['status' => 'error', 'redirect' => route('login')]]);
     }
 }

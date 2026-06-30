@@ -162,9 +162,48 @@
         });
     }
 
+    /* ----------------------------------------------------------------------
+       OAuth popup (Google sign-in)
+       [data-oauth-popup] opens the provider flow in a centered popup window.
+       The callback bridge page posts a message back here; we then navigate
+       the main window (success → dashboard, error → /login with the message).
+       Falls back to a full-page redirect if the popup is blocked.
+       ---------------------------------------------------------------------- */
+    function initOAuthPopup() {
+        document.addEventListener('click', function (event) {
+            var trigger = event.target.closest('[data-oauth-popup]');
+            if (!trigger) return;
+
+            event.preventDefault();
+
+            var url = trigger.getAttribute('href');
+            url += (url.indexOf('?') > -1 ? '&' : '?') + 'popup=1';
+
+            var w = 480, h = 640;
+            var left = window.screenX + Math.max(0, (window.outerWidth - w) / 2);
+            var top = window.screenY + Math.max(0, (window.outerHeight - h) / 2);
+            var popup = window.open(url, 'sf_oauth', 'popup,width=' + w + ',height=' + h + ',left=' + left + ',top=' + top);
+
+            // Popup blocked → fall back to normal navigation.
+            if (!popup) {
+                window.location.href = trigger.getAttribute('href');
+            }
+        });
+
+        window.addEventListener('message', function (event) {
+            if (event.origin !== window.location.origin) return;
+            var data = event.data || {};
+            if (data.type !== 'sf-oauth') return;
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         initAlertDismiss();
         initModals();
         initHeaderNav();
+        initOAuthPopup();
     });
 })();

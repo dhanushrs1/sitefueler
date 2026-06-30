@@ -5,6 +5,20 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.2] — Google OAuth Fix
+
+### Fixed
+- **Google sign-in failing with "Could not sign in"** — root cause was cURL error
+  60 (SSL: unable to get local issuer certificate) during the server-side token
+  exchange, because PHP had no CA bundle. Added `composer/ca-bundle` and pointed
+  Socialite's HTTP client at it (SSL is still verified, no php.ini changes).
+- The OAuth callback now **logs the real exception** for future diagnosis.
+
+### Changed
+- **Google sign-in opens in a popup window** (not the full tab/page); falls back
+  to a full-page redirect if the popup is blocked. Success/errors post back to the
+  opener via `postMessage`.
+
 ## [0.5.1] — Auth Polish & Google Sign-In
 
 ### Added
