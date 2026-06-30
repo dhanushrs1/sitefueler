@@ -1,0 +1,37 @@
+/* ==========================================================================
+   SiteFueler — Empty State (components/empty-state.css)
+   Layout component: centered icon + title + message + actions.
+   Tokens only.
+   ========================================================================== */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-16);
+    padding: var(--space-64) var(--space-24);
+}
+.empty-state__icon {
+    color: var(--color-muted);
+    line-height: 1;
+}
+.empty-state__icon svg {
+    width: var(--space-48);
+    height: var(--space-48);
+}
+.empty-state__title {
+    font-size: var(--text-h4);
+    color: var(--color-heading);
+}
+.empty-state__message {
+    color: var(--color-muted);
+    max-width: 420px;
+}
+.empty-state__actions {
+    margin-top: var(--space-8);
+    display: flex;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+    justify-content: center;
+}

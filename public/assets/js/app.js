@@ -115,8 +115,35 @@
         });
     }
 
+    /* ----------------------------------------------------------------------
+       Header mobile navigation toggle
+       [data-nav-toggle] opens/closes #site-mobile-nav and keeps
+       aria-expanded in sync.
+       ---------------------------------------------------------------------- */
+    function initHeaderNav() {
+        var toggle = document.querySelector('[data-nav-toggle]');
+        if (!toggle) return;
+        var panelId = toggle.getAttribute('aria-controls');
+        var panel = panelId ? document.getElementById(panelId) : null;
+        if (!panel) return;
+
+        toggle.addEventListener('click', function () {
+            var isOpen = panel.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close the panel when a link inside it is clicked
+        panel.addEventListener('click', function (event) {
+            if (event.target.closest('a')) {
+                panel.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         initAlertDismiss();
         initModals();
+        initHeaderNav();
     });
 })();

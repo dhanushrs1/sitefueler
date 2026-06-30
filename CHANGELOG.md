@@ -5,6 +5,30 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] — Layout Components (Application Shell)
+
+Milestone 3. The application shell and layout components, composed from the
+Milestone 2 components.
+
+### Added
+- **Application shell** — `layouts/app` (base) + `layouts/marketing` (Header →
+  Main → Footer); `auth`/`dashboard`/`error` layout placeholders.
+- **Header** — sticky, config-driven navigation, search, Login/Get Started
+  buttons, mobile hamburger panel (`components/header/*`, `header.css`).
+- **Navigation config** — `config/navigation.php` (primary, footer, legal).
+- **Search Bar** — reusable component built on the Form System.
+- **Footer** — dark three-column footer composing config links + Button.
+- **Breadcrumb**, **Page Title**, **Empty State** layout components.
+- **404 page** (`errors/404.blade.php`) on the error layout.
+- Split CSS: `breadcrumb.css`, `page-title.css`, `empty-state.css`, plus
+  `header.css`/`footer.css`.
+- Application Shell review (`docs/reviews/0008-application-shell-review.md`).
+
+### Changed
+- Marketing pages now extend `layouts.marketing`.
+- Removed the old `partials/header` and `partials/footer` (replaced by components).
+- Added the **Visual QA** step to the workflow (`CONTRIBUTING.md`).
+
 ## [0.2.1] — UI Refinements
 
 ### Changed

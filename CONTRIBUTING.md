@@ -28,8 +28,15 @@ permanent `develop` branch.)
 
 1. Branch from `main`: `git checkout -b feature/my-feature main`
 2. Commit using the convention below.
-3. Merge into `main` when stable, then delete the feature branch.
-4. Tag the version when a milestone completes.
+3. **Visual QA** — open the page in desktop / tablet / mobile and check
+   alignment, spacing, overflow, focus states, typography, and zoom (125% / 150%).
+   Most UI bugs surface here, not in code review.
+4. Review against the spec + Definition of Done.
+5. Merge into `main` when stable, then delete the feature branch.
+6. Tag the version when a milestone completes.
+
+Lifecycle: **Specification → Implementation → Visual QA → Review → Merge →
+Release Notes → Tag.**
 
 ## Reusability gate
 
