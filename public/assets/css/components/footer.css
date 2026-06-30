@@ -24,6 +24,10 @@
     color: var(--color-white);
     margin-bottom: var(--space-12);
 }
+.site-footer__logo {
+    display: inline-flex;
+    margin-bottom: var(--space-20);
+}
 .site-footer__desc {
     color: var(--color-gray-300);
     font-size: var(--text-small);
@@ -32,9 +36,11 @@
 }
 
 .site-footer__heading {
-    font-size: var(--text-h5);
+    font-size: var(--text-small);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-white);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-gray-300);
     margin-bottom: var(--space-16);
 }
 .site-footer__list {
@@ -46,7 +52,7 @@
 }
 .site-footer__link {
     color: var(--color-gray-300);
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     text-decoration: none;
     transition: color var(--duration-normal) var(--ease);
 }

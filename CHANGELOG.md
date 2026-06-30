@@ -5,6 +5,15 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- **Header redesign** — clean, slim, Laravel-style: SVG wordmark logo (`x-logo`),
+  navbar height 80 → 64px, left-aligned light-weight nav (no bold), no search,
+  Login + Get Started (small) on the right.
+- **Footer polish** — white SVG logo, lighter uppercase headings, smaller links.
+- Added reusable `x-logo` component + `components/logo.css`.
+- Synced docs: `design-system.md` §17, `header.md` (height + structure).
+- Header/Footer polish review (`docs/reviews/0009-header-footer-polish-review.md`).
+
 ## [0.3.0] — Layout Components (Application Shell)
 
 Milestone 3. The application shell and layout components, composed from the
