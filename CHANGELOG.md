@@ -10,6 +10,11 @@ This project follows [Semantic Versioning](https://semver.org/).
   (`components/button.blade.php`) with four variants, three sizes, all six states,
   icon support (left / right / icon-only), and `components/button.css`.
 - Button review record (`docs/reviews/0001-button-review.md`).
+- **Form System** — shared `field` wrapper plus `input`, `textarea`, `select`,
+  `checkbox`, `radio`, and `switch` components, with validation states
+  (success/warning/error/disabled/readonly), label/hint/error, prefix/suffix
+  icons, and `group` layouts (single / two-column / inline); `components/form.css`.
+- Form review record (`docs/reviews/0002-form-review.md`).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-
