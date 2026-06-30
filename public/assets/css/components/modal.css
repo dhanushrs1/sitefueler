@@ -1,4 +1,120 @@
 /* ==========================================================================
    SiteFueler — Modal Component (components/modal.css)
+   --------------------------------------------------------------------------
    Implements docs/components/modal.md v1.0.
+   Built on the native <dialog> element (focus trap, Escape, inert background).
+   Sizes: sm (~420), md (~600, default), lg (~840) — widths are documented
+   component constants. Tokens used for everything else.
    ========================================================================== */
+
+.modal {
+    width: 100%;
+    max-width: 600px;                 /* Medium default */
+    max-height: 90vh;
+    margin: var(--space-16) auto;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-surface);
+    color: var(--color-body);
+    overflow: hidden;
+    /* enter/exit transition */
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    transition: opacity var(--duration-normal) var(--ease),
+                transform var(--duration-normal) var(--ease);
+}
+.modal.is-open {
+    opacity: 1;
+    transform: none;
+}
+
+/* Sizes */
+.modal--sm { max-width: 420px; }
+.modal--md { max-width: 600px; }
+.modal--lg { max-width: 840px; }
+
+/* Backdrop scrim (z-overlay handled by the native top layer) */
+.modal::backdrop {
+    background-color: rgba(10, 13, 20, 0.5);   /* scrim over --color-dark */
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease);
+}
+.modal.is-open::backdrop {
+    opacity: 1;
+}
+
+/* Internal layout — header / body / footer */
+.modal__dialog {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.modal__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-16);
+    padding: var(--space-24) var(--space-24) 0;
+}
+.modal__title {
+    font-size: var(--text-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+}
+
+.modal__close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-32);
+    height: var(--space-32);
+    color: var(--color-muted);
+    border-radius: var(--radius-sm);
+    transition: color var(--duration-normal) var(--ease),
+                background-color var(--duration-normal) var(--ease);
+}
+.modal__close svg { width: 1.25em; height: 1.25em; }
+.modal__close:hover {
+    color: var(--color-heading);
+    background-color: var(--color-gray-100);
+}
+.modal__close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.modal__body {
+    padding: var(--space-24);
+    overflow-y: auto;
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-8);
+    padding: 0 var(--space-24) var(--space-24);
+}
+
+/* Footer stacks full-width on small screens */
+@media (max-width: 767px) {
+    .modal__footer {
+        flex-direction: column-reverse;
+    }
+    .modal__footer .btn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal,
+    .modal::backdrop { transition: none; }
+}
+
+/* Lock background scroll while any modal is open (set by app.js) */
+body.modal-open {
+    overflow: hidden;
+}

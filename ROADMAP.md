@@ -17,7 +17,7 @@ a version when complete.
 
 ---
 
-## Milestone 2 — Core UI Components 🔄 In Progress
+## Milestone 2 — Core UI Components ✅ Complete
 
 **Version:** `v0.2.0`
 
@@ -31,7 +31,7 @@ a version when complete.
 
 ---
 
-## Milestone 3 — Layout Components
+## Milestone 3 — Layout Components 🔄 Next
 
 **Version:** `v0.3.0`
 
