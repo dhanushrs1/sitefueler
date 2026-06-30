@@ -1,4 +1,108 @@
 /* ==========================================================================
    SiteFueler — Card Component (components/card.css)
+   --------------------------------------------------------------------------
    Implements docs/components/card.md v1.0.
+   One base card; Product / Service / Blog inherit it and only change content.
+   Regions: media (4:3, optional badge overlay), body, footer.
+   Tokens only. Depth from shadow + white space (no texture/glass).
    ========================================================================== */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Media (image 4:3, with optional badge overlay)
+   -------------------------------------------------------------------------- */
+.card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-gray-100);
+}
+.card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.card__badges {
+    position: absolute;
+    top: var(--space-12);
+    left: var(--space-12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+}
+
+/* --------------------------------------------------------------------------
+   Body
+   -------------------------------------------------------------------------- */
+.card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-24);
+    flex: 1 1 auto;
+}
+
+.card__title {
+    font-size: var(--text-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+}
+.card__text {
+    font-size: var(--text-body);
+    color: var(--color-body);
+}
+.card__meta {
+    font-size: var(--text-small);
+    color: var(--color-muted);
+}
+.card__price {
+    font-size: var(--text-h5);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-heading);
+}
+
+/* --------------------------------------------------------------------------
+   Footer (pinned to bottom for equal-height cards in a grid)
+   -------------------------------------------------------------------------- */
+.card__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive (whole-card link / hover lift)
+   -------------------------------------------------------------------------- */
+.card--interactive {
+    cursor: pointer;
+    transition: box-shadow var(--duration-normal) var(--ease),
+                transform var(--duration-normal) var(--ease);
+}
+.card--interactive:hover {
+    box-shadow: var(--shadow-lg);
+}
+.card--interactive:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Disabled (e.g. out-of-stock item) */
+.card--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card--interactive { transition: none; }
+}

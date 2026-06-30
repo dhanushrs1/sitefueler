@@ -24,6 +24,10 @@ This project follows [Semantic Versioning](https://semver.org/).
   assertive/polite by severity; `components/alert.css`. Dismiss handled by a
   delegated vanilla-JS handler in `app.js`.
 - Alert review record (`docs/reviews/0004-alert-review.md`).
+- **Card component** — one base card (`card/card.blade.php`) with media (4:3) +
+  badge overlay, body, and footer slots; Product/Service/Blog variants inherit it;
+  interactive whole-card link with hover lift; `components/card.css`.
+- Card review record (`docs/reviews/0005-card-review.md`).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-
