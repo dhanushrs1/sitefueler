@@ -5,14 +5,22 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.1] — Auth Polish & Google Sign-In
+
 ### Added
-- **Forgot password** page (`/forgot-password`) — UI only (email + send reset link).
+- **Google Sign-In** fully wired (Socialite): `openid/profile/email` scopes,
+  `SocialAuthService` for resolve/link/create, account linking by email (no
+  duplicates), customer-only role, graceful cancel/invalid handling.
+- **Forgot password** page (`/forgot-password`) — UI (email + send reset link).
+- `roles.description`, `social_accounts.provider_name`; nullable `users.password`
+  for Google users.
 
 ### Changed
-- **Auth UI overhaul** — dedicated no-scroll auth layout (header + slim footer),
-  floating-label fields, premium multicolor Google button, refined typography and
-  copy across login / register / forgot password. Review
-  `docs/reviews/0014-auth-ui-review.md`.
+- **Auth UI overhaul** — floating-label fields, premium multicolor Google button,
+  refined typography/copy across login / register / forgot; full marketing footer
+  retained; fields/buttons sized to 48px.
+- Reviews `docs/reviews/0014`–`0015`; `docs/architecture/authentication.md` frozen
+  as the identity source of truth.
 
 ## [0.5.0] — Identity & Authentication
 
