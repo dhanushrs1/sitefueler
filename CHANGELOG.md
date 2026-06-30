@@ -5,6 +5,15 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Navigation submenus** — desktop dropdowns for Templates / Plugins / Services
+  (hover + focus, CSS-only); accordion submenus in the off-canvas drawer (native
+  `<details>`); reusable `x-social-links` component.
+- **Drawer enhancements** — fuller menu set (`config/navigation.drawer`, adds
+  Pricing/Documentation/About), pinned footer with CTAs + **social follow** row,
+  and a smoother slide easing.
+- Navigation submenus review (`docs/reviews/0011-nav-submenus-review.md`).
+
 ### Changed
 - **Site font → Instrument Sans** (site-wide) via Bunny Fonts; `--font-family-base`
   updated and weight tokens clamped to 400–700. Docs synced.
