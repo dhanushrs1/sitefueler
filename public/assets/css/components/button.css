@@ -32,6 +32,8 @@
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
+    /* Subtle inner shadow at the TOP only (no bottom, no outer shadow). */
+    box-shadow: inset 0 2px 4px -2px rgba(0, 0, 0, 0.22);
     transition: background-color var(--duration-normal) var(--ease),
                 border-color var(--duration-normal) var(--ease),
                 color var(--duration-normal) var(--ease),
@@ -57,13 +59,16 @@
    -------------------------------------------------------------------------- */
 .btn--primary {
     background-color: var(--color-primary);
+    border-color: var(--color-primary-hover);   /* defined edge on light bg */
     color: var(--color-white);
 }
 .btn--primary:hover {
     background-color: var(--color-primary-hover);
+    color: var(--color-white);              /* keep text white on hover */
 }
 .btn--primary:active {
     background-color: var(--color-primary-hover);
+    color: var(--color-white);
 }
 
 /* --------------------------------------------------------------------------
@@ -77,9 +82,11 @@
 .btn--secondary:hover {
     background-color: var(--color-gray-50);
     border-color: var(--color-gray-300);
+    color: var(--color-heading);            /* keep text color on hover */
 }
 .btn--secondary:active {
     background-color: var(--color-gray-100);
+    color: var(--color-heading);
 }
 
 /* --------------------------------------------------------------------------
@@ -91,9 +98,11 @@
 }
 .btn--ghost:hover {
     background-color: var(--color-gray-100);
+    color: var(--color-heading);            /* keep text color on hover */
 }
 .btn--ghost:active {
     background-color: var(--color-gray-200);
+    color: var(--color-heading);
 }
 
 /* --------------------------------------------------------------------------
@@ -101,13 +110,16 @@
    -------------------------------------------------------------------------- */
 .btn--danger {
     background-color: var(--color-danger);
+    border-color: var(--color-danger-hover);    /* defined edge on light bg */
     color: var(--color-white);
 }
 .btn--danger:hover {
     background-color: var(--color-danger-hover);
+    color: var(--color-white);              /* keep text white on hover */
 }
 .btn--danger:active {
     background-color: var(--color-danger-hover);
+    color: var(--color-white);
 }
 
 /* --------------------------------------------------------------------------

@@ -5,6 +5,8 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.1] — Shell & Button Polish
+
 ### Added
 - **Navigation submenus** — desktop dropdowns for Templates / Plugins / Services
   (hover + focus, CSS-only); accordion submenus in the off-canvas drawer (native
@@ -12,27 +14,23 @@ This project follows [Semantic Versioning](https://semver.org/).
 - **Drawer enhancements** — fuller menu set (`config/navigation.drawer`, adds
   Pricing/Documentation/About), pinned footer with CTAs + **social follow** row,
   and a smoother slide easing.
-- Navigation submenus review (`docs/reviews/0011-nav-submenus-review.md`).
+- **Header cart icon** — stroked Lucide `shopping-cart` link, visible at all sizes.
+- Reusable `x-logo` component + `components/logo.css`.
 
 ### Changed
-- **Site font → Instrument Sans** (site-wide) via Bunny Fonts; `--font-family-base`
-  updated and weight tokens clamped to 400–700. Docs synced.
-- **Header cart icon** — stroked Lucide `shopping-cart` link, visible at all sizes.
-- **Mobile navigation → right-side off-canvas drawer** — slides in/out, closes via
-  X / backdrop / Escape, scroll-locked, focus-managed (replaces the dropdown panel).
-- **Footer redesign** — overlapping brand-gradient **CTA card** (quote form built
-  on the Form System) + dark three-column footer (Best Selling / Useful Links) +
-  copyright/legal bar; footer link config updated.
-- Shell v2 review (`docs/reviews/0010-shell-v2-review.md`).
-
-### Changed (earlier, same cycle)
-- Header redesign — clean, slim, Laravel-style: SVG wordmark logo (`x-logo`),
-  navbar height 80 → 64px, left-aligned light-weight nav (no bold), no search,
-  Login + Get Started (small) on the right.
-- **Footer polish** — white SVG logo, lighter uppercase headings, smaller links.
-- Added reusable `x-logo` component + `components/logo.css`.
-- Synced docs: `design-system.md` §17, `header.md` (height + structure).
-- Header/Footer polish review (`docs/reviews/0009-header-footer-polish-review.md`).
+- **Site font → Instrument Sans** (site-wide) via Bunny Fonts; weight tokens
+  clamped to 400–700.
+- **Header redesign** — clean, slim (navbar 80 → 64px), SVG wordmark logo,
+  left-aligned light-weight nav, no search.
+- **Mobile navigation → right-side off-canvas drawer** (slide in/out, X / backdrop /
+  Escape, scroll-locked, focus-managed).
+- **Footer redesign** — overlapping brand-gradient CTA card (quote form on the
+  Form System) + dark three-column footer (Best Selling / Useful Links) + bottom bar.
+- **Button polish** — subtle **top-only inset shadow** on all buttons; filled
+  variants (Primary/Danger) gain a darker **border** for a defined edge on light
+  backgrounds; filled buttons keep **white** text on hover (fixed the orange
+  Get Started hover).
+- Reviews `docs/reviews/0009`–`0011`; release notes `docs/releases/v0.3.1.md`.
 
 ## [0.3.0] — Layout Components (Application Shell)
 

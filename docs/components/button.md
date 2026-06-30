@@ -35,9 +35,15 @@ label, and an optional trailing icon — all centered on one line.
 | Corner radius  | 6px (`--radius-sm`) — no exceptions    |
 | Font family    | `--font-family-base`                   |
 | Font weight    | `--font-weight-semibold` (600)         |
+| Inner shadow   | `inset 0 2px 4px -2px rgba(0,0,0,.22)` — top only |
 | Transition     | 200ms (`--duration-normal`, `--ease`)  |
 | Icon source    | Lucide only                            |
 | Icon gap       | `--space-8` between icon and label     |
+
+All buttons carry a subtle **top-only inset shadow** (no bottom, no outer shadow).
+Filled variants (Primary, Danger) use a slightly darker **border** (their hover
+shade) so the edge reads clearly on light backgrounds. On hover, filled buttons
+keep **white** text; Secondary/Ghost keep their text color.
 
 Icon layouts allowed: **Left Icon**, **Right Icon**, **Icon Only**. Nothing more.
 An Icon-Only button must still carry an accessible name (see §7).
