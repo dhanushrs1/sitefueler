@@ -1,37 +1,51 @@
-@extends('layouts.marketing')
+@extends('layouts.auth')
 
 @section('title', 'Register')
 
 @section('content')
-<section class="auth">
-    <div class="container">
-        <div class="auth__card">
-            <h1 class="auth__title">Create your account</h1>
-            <p class="auth__subtitle">Join SiteFueler in a few seconds.</p>
-
-            @if ($errors->any())
-                <x-alert variant="danger" class="mb-16">{{ $errors->first() }}</x-alert>
-            @endif
-
-            <form method="post" action="{{ route('register.attempt') }}">
-                @csrf
-
-                <x-form.input name="name" label="Name" placeholder="Jane Doe" :value="old('name')" required />
-                <x-form.input name="email" type="email" label="Email" placeholder="you@example.com" :value="old('email')" required />
-                <x-form.input name="password" type="password" label="Password" placeholder="••••••••" required />
-                <x-form.input name="password_confirmation" type="password" label="Confirm password" placeholder="••••••••" required />
-
-                <x-button variant="primary" type="submit" :block="true" class="mt-8">Create account</x-button>
-            </form>
-
-            <div class="auth__divider">OR</div>
-
-            <x-google-button label="Continue with Google" />
-
-            <p class="auth__alt">
-                Already have an account? <a href="{{ route('login') }}">Login</a>
-            </p>
-        </div>
+<div class="auth">
+    <div class="auth__head">
+        <span class="auth__eyebrow">Get started</span>
+        <h1 class="auth__title">Create your account</h1>
+        <p class="auth__subtitle">Join SiteFueler and start shipping faster.</p>
     </div>
-</section>
+
+    @if ($errors->any())
+        <x-alert variant="danger" class="mb-16">{{ $errors->first() }}</x-alert>
+    @endif
+
+    <form method="post" action="{{ route('register.attempt') }}">
+        @csrf
+
+        <div class="ff">
+            <input class="ff__input" id="name" name="name" type="text" placeholder=" " value="{{ old('name') }}" required autofocus>
+            <label class="ff__label" for="name">Full name</label>
+        </div>
+
+        <div class="ff">
+            <input class="ff__input" id="email" name="email" type="email" placeholder=" " value="{{ old('email') }}" required>
+            <label class="ff__label" for="email">Email address</label>
+        </div>
+
+        <div class="ff">
+            <input class="ff__input" id="password" name="password" type="password" placeholder=" " required>
+            <label class="ff__label" for="password">Password</label>
+        </div>
+
+        <div class="ff">
+            <input class="ff__input" id="password_confirmation" name="password_confirmation" type="password" placeholder=" " required>
+            <label class="ff__label" for="password_confirmation">Confirm password</label>
+        </div>
+
+        <x-button variant="primary" type="submit" :block="true" class="auth__submit">Create account</x-button>
+    </form>
+
+    <div class="auth__divider">or continue with</div>
+
+    <x-google-button label="Sign up with Google" />
+
+    <p class="auth__alt">
+        Already have an account? <a href="{{ route('login') }}">Sign in</a>
+    </p>
+</div>
 @endsection
