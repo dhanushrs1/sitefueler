@@ -6,7 +6,18 @@ This project follows [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Changed
-- **Header redesign** — clean, slim, Laravel-style: SVG wordmark logo (`x-logo`),
+- **Site font → Instrument Sans** (site-wide) via Bunny Fonts; `--font-family-base`
+  updated and weight tokens clamped to 400–700. Docs synced.
+- **Header cart icon** — stroked Lucide `shopping-cart` link, visible at all sizes.
+- **Mobile navigation → right-side off-canvas drawer** — slides in/out, closes via
+  X / backdrop / Escape, scroll-locked, focus-managed (replaces the dropdown panel).
+- **Footer redesign** — overlapping brand-gradient **CTA card** (quote form built
+  on the Form System) + dark three-column footer (Best Selling / Useful Links) +
+  copyright/legal bar; footer link config updated.
+- Shell v2 review (`docs/reviews/0010-shell-v2-review.md`).
+
+### Changed (earlier, same cycle)
+- Header redesign — clean, slim, Laravel-style: SVG wordmark logo (`x-logo`),
   navbar height 80 → 64px, left-aligned light-weight nav (no bold), no search,
   Login + Get Started (small) on the right.
 - **Footer polish** — white SVG logo, lighter uppercase headings, smaller links.

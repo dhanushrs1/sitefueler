@@ -83,8 +83,8 @@ neutral/brand palette, and they are reserved exclusively for status feedback.
 **Purpose:** A single typeface and a fixed type scale create rhythm and
 hierarchy, and stop developers from inventing arbitrary font sizes.
 
-**Rule:** Use **Be Vietnam Pro** as the only font family. Allowed weights:
-**300, 400, 500, 600, 700, 800**. Use only the sizes in the scale below (px).
+**Rule:** Use **Instrument Sans** as the only font family. Allowed weights:
+**400, 500, 600, 700**. Use only the sizes in the scale below (px).
 
 | Level   | Size | Typical Weight |
 | ------- | ---- | -------------- |
@@ -452,7 +452,7 @@ and avoids sluggish or distracting motion.
 **Purpose:** Typography establishes the personality of the product before colors,
 icons, or illustrations.
 
-**Rule:** Choose typography before designing layouts. Use Be Vietnam Pro
+**Rule:** Choose typography before designing layouts. Use Instrument Sans
 consistently across the application (Section 3). Font size, weight, spacing, and
 hierarchy should communicate importance more than color does.
 

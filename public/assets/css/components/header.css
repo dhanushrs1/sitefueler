@@ -1,9 +1,9 @@
 /* ==========================================================================
    SiteFueler — Header Component (components/header.css)
    --------------------------------------------------------------------------
-   Clean, slim marketing header (Laravel-style): logo + left nav + right
-   actions. White background, subtle bottom border, light-weight nav text.
-   No search. Composes Button. Tokens only.
+   Clean, slim marketing header: logo + left nav + right actions (cart, Login,
+   Get Started). White background, subtle bottom border, light-weight nav.
+   Mobile: right-side off-canvas drawer. Tokens only.
    ========================================================================== */
 
 .site-header {
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-32);
-    height: var(--navbar-height);     /* 64px — slim */
+    height: var(--navbar-height);     /* 64px */
 }
 
 .site-header__logo {
@@ -43,21 +43,38 @@
     text-decoration: none;
     transition: color var(--duration-normal) var(--ease);
 }
-.site-nav__link:hover {
-    color: var(--color-primary);
-}
-.site-nav__link.is-active {
-    color: var(--color-heading);
-}
+.site-nav__link:hover { color: var(--color-primary); }
+.site-nav__link.is-active { color: var(--color-heading); }
 
-/* Right-side actions (pushed to the far right) */
+/* Right-side actions */
 .site-header__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--space-12);
     flex-shrink: 0;
     margin-left: auto;
 }
+.site-header__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+/* Icon button (cart) */
+.site-header__icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-40);
+    height: var(--space-40);
+    color: var(--color-heading);
+    border-radius: var(--radius-sm);
+    transition: color var(--duration-normal) var(--ease),
+                background-color var(--duration-normal) var(--ease);
+}
+.site-header__icon-btn svg { width: 1.25em; height: 1.25em; }
+.site-header__icon-btn:hover { color: var(--color-primary); background-color: var(--color-gray-50); }
+.site-header__icon-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
 /* Hamburger (mobile only) */
 .site-header__burger {
@@ -71,44 +88,102 @@
 }
 .site-header__burger svg { width: 1.5em; height: 1.5em; }
 .site-header__burger:hover { background-color: var(--color-gray-100); }
-.site-header__burger:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
+.site-header__burger:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* Mobile dropdown panel */
-.site-header__mobile {
-    display: none;
-    flex-direction: column;
-    gap: var(--space-8);
-    padding: var(--space-16) 0 var(--space-24);
-    border-top: 1px solid var(--color-border);
+/* --------------------------------------------------------------------------
+   Off-canvas drawer (mobile) — slides in from the right
+   -------------------------------------------------------------------------- */
+.nav-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    visibility: hidden;
 }
-.site-header__mobile.is-open { display: flex; }
-.site-header__mobile .site-nav {
+.nav-drawer.is-open { visibility: visible; }
+
+.nav-drawer__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 13, 20, 0.5);   /* scrim over --color-dark */
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease);
+}
+.nav-drawer.is-open .nav-drawer__backdrop { opacity: 1; }
+
+.nav-drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(360px, 85vw);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-20);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: transform var(--duration-normal) var(--ease);
+    overflow-y: auto;
+}
+.nav-drawer.is-open .nav-drawer__panel { transform: translateX(0); }
+
+.nav-drawer__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border);
+}
+.nav-drawer__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-40);
+    height: var(--space-40);
+    color: var(--color-heading);
+    border-radius: var(--radius-sm);
+}
+.nav-drawer__close svg { width: 1.25em; height: 1.25em; }
+.nav-drawer__close:hover { background-color: var(--color-gray-100); }
+.nav-drawer__close:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.nav-drawer__nav.site-nav {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-4);
 }
-.site-header__mobile .site-nav__link {
-    padding: var(--space-12) var(--space-16);
+.nav-drawer__nav .site-nav__link {
+    padding: var(--space-12) var(--space-12);
     font-size: var(--text-body);
 }
-.site-header__mobile-cta {
+.nav-drawer__cta {
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
-    margin-top: var(--space-12);
+    margin-top: auto;
+    padding-top: var(--space-16);
+    border-top: 1px solid var(--color-border);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .nav-drawer__backdrop,
+    .nav-drawer__panel { transition: none; }
+}
+
+/* Lock background scroll while the drawer is open */
+body.nav-open { overflow: hidden; }
+
 /* --------------------------------------------------------------------------
-   Responsive: below 1024px collapse nav + actions behind the hamburger
+   Responsive: below 1024px → hide nav + CTA, show hamburger (drawer)
    -------------------------------------------------------------------------- */
 @media (max-width: 1023px) {
     .site-nav { display: none; }
-    .site-header__actions { display: none; }
+    .site-header__cta { display: none; }
     .site-header__burger { display: inline-flex; }
-    .site-header__inner { gap: var(--space-16); }
-    /* keep the logo centered between burger and the (hidden) actions */
-    .site-header__logo { margin-left: auto; margin-right: auto; }
+}
+
+/* Desktop: drawer never shows */
+@media (min-width: 1024px) {
+    .nav-drawer { display: none; }
 }
