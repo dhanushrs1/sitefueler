@@ -25,11 +25,11 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Route middleware aliases
         $middleware->alias([
-            'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+            'role' => \App\Http\Middleware\EnsureUserHasRole::class,
         ]);
 
-        // Send unauthenticated users to the admin login (only protected area today)
-        $middleware->redirectGuestsTo(fn () => route('admin.login'));
+        // Send unauthenticated users to the unified login page
+        $middleware->redirectGuestsTo(fn () => route('login'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

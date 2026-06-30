@@ -54,9 +54,19 @@ a version when complete.
 
 ---
 
-## Milestone 5 — Homepage & Business Modules
+## Milestone 5 — Identity & Authentication ✅ Complete
 
-**Version:** `v0.5.0+`
+**Version:** `v0.5.0`
+
+- Unified login + register (email/password + Google)
+- Roles & role-based authorization
+- Social accounts (OAuth), configurable admin prefix
+
+---
+
+## Milestone 6 — Business Modules
+
+**Version:** `v0.6.0+`
 
 - Template Management (first end-to-end module)
 - Homepage assembled from components

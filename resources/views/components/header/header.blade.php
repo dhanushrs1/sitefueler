@@ -17,10 +17,36 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
             </a>
 
-            <span class="site-header__cta">
-                <x-button variant="ghost" size="sm" href="/login">Login</x-button>
-                <x-button variant="primary" size="sm" href="/get-started">Get Started</x-button>
-            </span>
+            @auth
+                @php $u = auth()->user(); @endphp
+                <div class="site-header__user site-nav__item--has-dropdown">
+                    <button type="button" class="site-header__user-btn" aria-haspopup="true">
+                        <span class="site-header__avatar" aria-hidden="true">{{ strtoupper(substr($u->name, 0, 1)) }}</span>
+                        <svg class="site-nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="site-nav__dropdown site-nav__dropdown--right">
+                        <ul class="site-nav__dropdown-list">
+                            @if ($u->isAdmin())
+                                <li><a class="site-nav__dropdown-link" href="{{ route('admin.dashboard') }}">Go to Admin</a></li>
+                            @else
+                                <li><a class="site-nav__dropdown-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+                            @endif
+                            <li><a class="site-nav__dropdown-link" href="{{ route('dashboard') }}">Profile</a></li>
+                            <li>
+                                <form method="post" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="site-nav__dropdown-link" style="width:100%;text-align:left;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            @else
+                <span class="site-header__cta">
+                    <x-button variant="ghost" size="sm" href="{{ route('login') }}">Login</x-button>
+                    <x-button variant="primary" size="sm" href="{{ route('register') }}">Get Started</x-button>
+                </span>
+            @endauth
 
             {{-- Hamburger (mobile) --}}
             <button
@@ -54,8 +80,20 @@
 
             <div class="nav-drawer__footer">
                 <div class="nav-drawer__cta">
-                    <x-button variant="ghost" href="/login" :block="true">Login</x-button>
-                    <x-button variant="primary" href="/get-started" :block="true">Get Started</x-button>
+                    @auth
+                        @if (auth()->user()->isAdmin())
+                            <x-button variant="primary" href="{{ route('admin.dashboard') }}" :block="true">Go to Admin</x-button>
+                        @else
+                            <x-button variant="primary" href="{{ route('dashboard') }}" :block="true">Dashboard</x-button>
+                        @endif
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                            <x-button variant="ghost" type="submit" :block="true">Logout</x-button>
+                        </form>
+                    @else
+                        <x-button variant="ghost" href="{{ route('login') }}" :block="true">Login</x-button>
+                        <x-button variant="primary" href="{{ route('register') }}" :block="true">Get Started</x-button>
+                    @endauth
                 </div>
 
                 <div class="nav-drawer__social">

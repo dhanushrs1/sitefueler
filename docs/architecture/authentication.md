@@ -1,53 +1,96 @@
-# Authentication — Admin (v0.4.0)
+# Identity & Authentication v1.0
 
 **Status:** Accepted
 
-How admin access works in SiteFueler today. This covers the **admin** area only;
-customer/frontend auth is a later milestone.
-
-## Approach
-
-- Uses Laravel's default session auth (`web` guard) against the `users` table.
-- An `is_admin` boolean column (migration) marks admin accounts.
-- A custom middleware `EnsureUserIsAdmin` (alias `admin`) allows only authenticated
-  users with `is_admin = true`; everyone else gets a 403.
-- Unauthenticated requests to protected routes redirect to `admin.login`
-  (`redirectGuestsTo` in `bootstrap/app.php`).
-
-## Routes (named, grouped)
+One identity system for everyone — frontend, customer, and admin. **Roles** decide
+access; there is **one session**, not separate admin/customer sessions.
 
 ```
-GET  /admin/login   admin.login          AuthController@showLogin
-POST /admin/login   admin.login.attempt  AuthController@login
-GET  /admin         admin.dashboard      DashboardController@index   [auth, admin]
-GET  /admin/profile admin.profile        ProfileController@index     [auth, admin]
-PUT  /admin/profile admin.profile.update ProfileController@update    [auth, admin]
-POST /admin/logout  admin.logout         AuthController@logout       [auth, admin]
+Email Login ─┐
+Google Login ─┼─→ Authentication → User Account → Roles & Permissions → {Frontend, Customer, Admin}
+Future OAuth ─┘
 ```
 
-Future modules add `Route::resource(...)` inside the `[auth, admin]` group, so
-`route('admin.templates.index')` etc. work without hardcoded URLs.
+## Login methods
 
-## Login flow
+- ✅ Email + Password
+- ✅ Google Sign-In (Socialite)
+- ⬜ GitHub / Microsoft / Apple (future — `social_accounts` schema already supports them)
 
-1. `showLogin` renders the form (and redirects already-signed-in admins to the
-   dashboard).
-2. `login` validates email/password, attempts auth, and **rejects non-admins**
-   (logs them back out with an error). On success it regenerates the session and
-   redirects to the intended URL or the dashboard.
-3. `logout` invalidates the session and regenerates the CSRF token.
+## Pages (unified)
 
-## Default admin (dev)
+- `GET /login`, `POST /login` — one login page (marketing layout)
+- `GET /register`, `POST /register` — public registration (always creates a **customer**)
+- `POST /logout`
+- `GET /auth/google/redirect`, `GET /auth/google/callback`
 
-Seeded by `AdminUserSeeder`:
+There is **no separate admin login** — admins sign in at `/login` and are routed
+to the admin area by role.
 
-- Email: `admin@sitefueler.test`
-- Password: `password`
+## Roles
 
-> Change this before any non-local deployment.
+Seeded by `RoleSeeder`: `customer`, `admin`, `editor`, `support`, `super-admin`.
+A user has one `role_id`. Helpers: `$user->hasRole([...])`, `$user->isAdmin()`.
+Public registration and Google sign-up always assign **customer**. Admins are only
+created by existing admins (no public path).
 
-## Future
+## Authorization
 
-- Google login (frontend customers only — not admin).
-- Optional 2FA for admin.
-- Separate `admin` guard if admin and customer auth need to diverge.
+- `auth` middleware protects authenticated areas.
+- `role:<slugs>` middleware (`EnsureUserHasRole`) gates the admin area
+  (`role:admin,super-admin`, from `config('authentication.admin_roles')`).
+- Unauthenticated requests redirect to `/login`.
+
+## Database
+
+**users** (added): `uuid`, `role_id`, `username`, `avatar`, `status`
+(`pending|active|suspended|banned`), `last_login_at`, `last_login_ip`.
+The numeric `id` stays internal; `uuid` is the public reference (route key).
+
+**roles**: `id`, `name`, `slug`.
+
+**social_accounts**: `user_id`, `provider`, `provider_id`, `provider_email`,
+`provider_avatar`, `provider_data` (JSON — raw payload for forward-compat),
+`access_token`/`refresh_token` (encrypted), `token_expires_at`. Unique on
+`(provider, provider_id)`. Keeping OAuth data here (not on `users`) lets a user
+connect multiple providers without schema changes.
+
+## Google sign-in flow
+
+```
+Continue with Google → Google → social account exists?
+  yes → log in
+  no  → match by email or create user (role = customer, avatar from provider)
+        → save social_account → log in
+```
+
+`provider_avatar` is stored on the social account and copied to `users.avatar` as
+the default; a later custom upload changes `users.avatar` only.
+
+## Admin prefix
+
+Configurable via `ADMIN_PREFIX` (`config('authentication.admin_prefix')`, default
+`admin`). Routes are named `admin.*`, so views use `route('admin.*')` regardless
+of the prefix.
+
+## Security / audit
+
+Each login records `last_login_at` and `last_login_ip` (extendable to full login
+history). Tokens are encrypted at rest.
+
+## Default admin (dev only)
+
+`admin@sitefueler.test` / `password` (seeded). **Change before deployment.**
+
+## Setup
+
+```bash
+php artisan migrate:fresh --seed
+composer require laravel/socialite   # already installed
+# add GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET to .env to enable Google
+```
+
+## Future (no redesign required)
+
+2FA, passkeys, login history, connected accounts, active sessions, remember
+devices, account deletion, email-change verification.
