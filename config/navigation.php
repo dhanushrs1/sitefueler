@@ -30,7 +30,7 @@ return [
         ['title' => 'Services', 'url' => '/services', 'children' => [
             ['title' => 'Custom Development',   'url' => '/services/development'],
             ['title' => 'Site Migration',       'url' => '/services/migration'],
-            ['title' => 'Maintenance & Support','url' => '/services/support'],
+            ['title' => 'Maintenance & Support', 'url' => '/services/support'],
         ]],
         ['title' => 'Blog', 'url' => '/blog'],
         ['title' => 'Contact', 'url' => '/contact'],
@@ -53,7 +53,7 @@ return [
         ['title' => 'Services', 'url' => '/services', 'children' => [
             ['title' => 'Custom Development',   'url' => '/services/development'],
             ['title' => 'Site Migration',       'url' => '/services/migration'],
-            ['title' => 'Maintenance & Support','url' => '/services/support'],
+            ['title' => 'Maintenance & Support', 'url' => '/services/support'],
         ]],
         ['title' => 'Pricing', 'url' => '/pricing'],
         ['title' => 'Blog', 'url' => '/blog'],

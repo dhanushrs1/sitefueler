@@ -8,7 +8,6 @@ use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
@@ -20,9 +19,7 @@ class SocialiteController extends Controller
     /** Providers SiteFueler supports today. */
     private const SUPPORTED = ['google'];
 
-    public function __construct(private SocialAuthService $social)
-    {
-    }
+    public function __construct(private SocialAuthService $social) {}
 
     /**
      * Build the provider with an HTTP client that uses a known CA bundle, so
@@ -46,7 +43,7 @@ class SocialiteController extends Controller
 
         if (! config("services.{$provider}.client_id")) {
             return redirect()->route('login')
-                ->withErrors(['email' => ucfirst($provider) . ' sign-in is not configured yet.']);
+                ->withErrors(['email' => ucfirst($provider).' sign-in is not configured yet.']);
         }
 
         // Remember whether the flow was opened in a popup window.
@@ -74,11 +71,11 @@ class SocialiteController extends Controller
                 'message' => $e->getMessage(),
             ]);
 
-            return $this->fail($request, $popup, 'Could not sign in with ' . ucfirst($provider) . '. Please try again.');
+            return $this->fail($request, $popup, 'Could not sign in with '.ucfirst($provider).'. Please try again.');
         }
 
         if (! $oauth->getEmail()) {
-            return $this->fail($request, $popup, 'Your ' . ucfirst($provider) . ' account did not share an email address.');
+            return $this->fail($request, $popup, 'Your '.ucfirst($provider).' account did not share an email address.');
         }
 
         $user = $this->social->resolveUser($provider, $oauth);
@@ -87,12 +84,30 @@ class SocialiteController extends Controller
             return $this->fail($request, $popup, 'This account is not active.');
         }
 
-        Auth::login($user, true);
-        $request->session()->regenerate();
-        LoginController::recordLogin($user, $request);
+        // Confirmed-2FA users must pass the challenge (unless on a trusted device).
+        if (LoginController::needsTwoFactorChallenge($user, $request)) {
+            LoginController::stashPendingLogin($request, $user, true);
 
-        $target = LoginController::homeFor($user);
+            return $this->finish($request, $popup, route('two-factor.challenge'));
+        }
 
+        $markVerified = ! $user->requiresTwoFactor();
+        LoginController::completeLogin($user, $request, true, $markVerified);
+
+        // Required-but-not-enrolled users are forced into the setup wizard.
+        $target = ($user->requiresTwoFactor() && ! $user->hasConfirmedTwoFactor())
+            ? route('two-factor.setup')
+            : LoginController::homeFor($user);
+
+        return $this->finish($request, $popup, $target);
+    }
+
+    /**
+     * Success response — popup posts the redirect to its opener; otherwise a
+     * normal (intended-aware) redirect.
+     */
+    private function finish(Request $request, bool $popup, string $target)
+    {
         return $popup
             ? view('auth.oauth-popup', ['payload' => ['status' => 'success', 'redirect' => $target]])
             : redirect()->intended($target);

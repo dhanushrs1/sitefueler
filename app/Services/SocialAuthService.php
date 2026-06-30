@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Role;
 use App\Models\SocialAccount;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 
 class SocialAuthService
