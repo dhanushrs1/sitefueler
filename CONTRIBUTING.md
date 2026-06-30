@@ -2,23 +2,35 @@
 
 ## Branching model
 
+We use a simple, single-developer-friendly flow:
+
 ```
-main          Stable, release-ready. Never commit directly.
-  └── develop  Daily integration branch. Features merge here first.
-        └── feature/*  One branch per feature.
+main            Stable, release-ready.
+  └── feature/*  One short-lived branch per feature, branched from main.
 ```
 
-Examples: `feature/button-system`, `feature/auth`, `feature/homepage`,
-`feature/admin-panel`, `feature/download-manager`.
+Examples: `feature/button-system`, `feature/form-system`, `feature/header`,
+`feature/homepage`.
 
-Delete a feature branch after it is merged.
+When a feature is finished, merge it into `main` and **delete the feature
+branch**. (If SiteFueler ever grows to multiple developers, we can reintroduce a
+permanent `develop` branch.)
 
 ## Workflow
 
-1. Branch from `develop`: `git checkout -b feature/my-feature develop`
+1. Branch from `main`: `git checkout -b feature/my-feature main`
 2. Commit using the convention below.
-3. Open a PR into `develop`.
-4. Promote `develop` → `main` only when stable, then tag the version.
+3. Merge into `main` when stable, then delete the feature branch.
+4. Tag the version when a milestone completes.
+
+## Reusability gate
+
+Before merging any feature branch into `main`, ask:
+
+> "Can this feature be reused in at least three places without modification?"
+
+If the answer is no, it's probably too page-specific and should be redesigned
+before merging. This keeps the shared component library clean.
 
 ## Commit style (Conventional Commits)
 

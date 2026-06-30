@@ -1,61 +1,79 @@
 # SiteFueler Roadmap
 
-A version-based plan. Each version is a meaningful, taggable checkpoint.
+We think in **milestones**. Each milestone groups related work and is tagged with
+a version when complete.
 
-## v0.1.0 — Foundation ✓
+---
+
+## Milestone 1 — Foundation ✅ Complete
+
+**Version:** `v0.1.0`
 
 - Laravel setup
 - Project architecture
 - Design system
 - Component specifications
-- CSS foundation
+- CSS foundation (variables, layout, utilities)
 
-## v0.2.0 — UI Components
+---
 
-- Button System
-- Form System
+## Milestone 2 — Core UI Components 🔄 In Progress
+
+**Version:** `v0.2.0`
+
+- Button
+- Form
 - Badge
 - Alert
 - Card
 - Table
 - Modal
 
-## v0.3.0 — Shell
+---
+
+## Milestone 3 — Layout Components
+
+**Version:** `v0.3.0`
 
 - Header
 - Footer
-- Navigation
-
-## v0.4.0 — Homepage
-
-- Homepage assembled from components
-
-## v0.5.0 — Authentication
-
-- Login / Register / Auth flows
-
-## v0.6.0 — Product System
-
-- Product pages and catalog
-
-## v0.7.0 — Downloads
-
-- Download manager
-
-## v1.0.0 — Public Release
-
-- First public release
 
 ---
 
-## Milestones
+## Milestone 4 — Homepage
 
-| # | Milestone       | Status      |
-| - | --------------- | ----------- |
-| 1 | Foundation      | ✓ Completed |
-| 2 | UI Components   | In progress |
-| 3 | Homepage        | Planned     |
-| 4 | Authentication  | Planned     |
-| 5 | Store           | Planned     |
-| 6 | Admin Panel     | Planned     |
-| 7 | Public Release  | Planned     |
+**Version:** `v0.4.0`
+
+- Homepage assembled from components
+
+---
+
+## Milestone 5 — Authentication
+
+**Version:** `v0.5.0`
+
+- Login / Register / Auth flows
+
+---
+
+## Milestone 6 — Store
+
+**Version:** `v0.6.0`
+
+- Product system and catalog
+
+---
+
+## Milestone 7 — Admin Panel
+
+**Version:** `v0.7.0`
+
+- Admin panel
+
+---
+
+## Milestone 8 — Public Release
+
+**Version:** `v1.0.0`
+
+- First public release

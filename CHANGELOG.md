@@ -6,6 +6,10 @@ This project follows [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 - Button component implementation (CSS + Blade).
+- Switched to milestone-based roadmap.
+- Replaced MIT license with a proprietary license (commercial software).
+- Simplified Git flow to `main` + `feature/*` (dropped permanent `develop`).
+- Added Architecture Decision Records under `docs/meetings/`.
 
 ## [0.1.0] — Initial foundation
 

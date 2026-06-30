@@ -5,8 +5,8 @@ resources.
 
 ## Status
 
-- **Version:** 0.1.0
-- **Current phase:** Component Implementation
+- **Milestone 1 — Foundation:** ✅ Complete (tagged `v0.1.0`)
+- **Milestone 2 — Core UI Components:** 🔄 In progress (→ `v0.2.0`)
 
 ## Technology
 
@@ -19,6 +19,11 @@ resources.
 
 No Tailwind, Bootstrap, jQuery, React, Vue, Alpine, or Sass — by design, for a
 simple, fast, and easy-to-deploy stack (Apache / shared hosting).
+
+## License
+
+Proprietary — © 2026 SiteFueler, all rights reserved. This is commercial software;
+see [`LICENSE`](LICENSE). The repository is private during active development.
 
 ## Documentation
 
