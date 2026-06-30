@@ -31,16 +31,20 @@ a version when complete.
 
 ---
 
-## Milestone 3 — Layout Components 🔄 Next
+## Milestone 3 — Layout Components ✅ Complete
 
 **Version:** `v0.3.0`
 
+- Application shell (app + marketing layouts)
 - Header
 - Footer
+- Navigation (config-driven)
+- Breadcrumb, Page Title, Empty State
+- Search Bar, 404
 
 ---
 
-## Milestone 4 — Homepage
+## Milestone 4 — Homepage 🔄 Next
 
 **Version:** `v0.4.0`
 

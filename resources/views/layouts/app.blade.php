@@ -6,17 +6,14 @@
     <title>@yield('title', 'SiteFueler')</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    @stack('styles')
 </head>
-<body>
+<body @hasSection('body-class') class="@yield('body-class')" @endif>
 
-@include('partials.header')
+    {{-- Specialized layouts (marketing, auth, dashboard, error) fill the body. --}}
+    @yield('body')
 
-<main>
-    @yield('content')
-</main>
-
-@include('partials.footer')
-
-<script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

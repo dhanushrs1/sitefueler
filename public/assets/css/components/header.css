@@ -1,4 +1,123 @@
 /* ==========================================================================
    SiteFueler — Header Component (components/header.css)
+   --------------------------------------------------------------------------
    Implements docs/components/header.md v1.0.
+   Sticky, 80px, white, bottom border. Logo / Nav / Actions.
+   Composes Button + Form (search). Tokens only.
    ========================================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-24);
+    height: var(--navbar-height);     /* 80px */
+}
+
+.site-header__logo {
+    font-size: var(--text-h5);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-heading);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.site-header__logo:hover { color: var(--color-heading); }
+
+/* Primary navigation (desktop) */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    flex: 1 1 auto;
+    justify-content: center;
+}
+.site-nav__link {
+    padding: var(--space-8) var(--space-12);
+    color: var(--color-body);
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease),
+                background-color var(--duration-normal) var(--ease);
+}
+.site-nav__link:hover {
+    color: var(--color-primary);
+    background-color: var(--color-gray-50);
+}
+.site-nav__link.is-active {
+    color: var(--color-primary);
+}
+
+/* Right-side actions */
+.site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    flex-shrink: 0;
+    margin-left: auto;
+}
+.site-header__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+/* Hamburger (mobile only) */
+.site-header__burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-40);
+    height: var(--space-40);
+    color: var(--color-heading);
+    border-radius: var(--radius-sm);
+}
+.site-header__burger svg { width: 1.5em; height: 1.5em; }
+.site-header__burger:hover { background-color: var(--color-gray-100); }
+.site-header__burger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Mobile dropdown panel */
+.site-header__mobile {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-16) 0 var(--space-24);
+    border-top: 1px solid var(--color-border);
+}
+.site-header__mobile.is-open { display: flex; }
+.site-header__mobile .search-bar .field { margin-bottom: var(--space-8); }
+.site-header__mobile .site-nav {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--space-4);
+}
+.site-header__mobile .site-nav__link {
+    padding: var(--space-12) var(--space-16);
+}
+.site-header__mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive: below 1024px collapse nav + CTAs behind the hamburger
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+    .site-nav { display: none; }
+    .site-header__cta { display: none; }
+    .site-header__burger { display: inline-flex; }
+}
