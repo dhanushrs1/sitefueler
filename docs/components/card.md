@@ -31,11 +31,11 @@ A card is a surface containing optional media, a body, and an optional footer.
 | Property      | Value                                  |
 | ------------- | -------------------------------------- |
 | Background    | `--color-surface`                       |
-| Corner radius | 16px (`--radius-md`)                     |
+| Corner radius | 10px (`--radius-md`)                     |
 | Shadow        | `--shadow-md` (resting)                  |
 | Padding       | `--space-24`                             |
 | Inner gap     | `--space-16` between body elements       |
-| Image radius  | `--image-radius` (16px), 4:3 ratio       |
+| Image radius  | `--image-radius` (10px), 4:3 ratio       |
 | Title         | `--text-h5` / `--text-h4`, `--color-heading` |
 | Body text     | `--text-body`, `--color-body`            |
 | Meta text     | `--text-small`, `--color-muted`          |

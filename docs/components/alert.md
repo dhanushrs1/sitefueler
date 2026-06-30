@@ -31,7 +31,7 @@ An alert is a horizontal block with an icon, message, and optional dismiss.
 
 | Property      | Value                                       |
 | ------------- | ------------------------------------------- |
-| Corner radius | 12px (`--radius-sm`)                         |
+| Corner radius | 6px (`--radius-sm`)                          |
 | Padding       | `--space-16`                                 |
 | Icon gap      | `--space-12`                                 |
 | Title         | `--text-body`, weight `--font-weight-semibold` |

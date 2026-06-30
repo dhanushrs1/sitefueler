@@ -34,7 +34,7 @@ A form is composed of field groups, each built from the same regions.
 | Property        | Value                                       |
 | --------------- | ------------------------------------------- |
 | Height          | 48px (`--input-height`)                      |
-| Corner radius   | 12px (`--radius-sm`)                          |
+| Corner radius   | 6px (`--radius-sm`)                           |
 | Border          | 1px solid `--color-border`                    |
 | Background      | `--color-surface`                             |
 | Text color      | `--color-body`                                |

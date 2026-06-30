@@ -133,20 +133,21 @@ viewport width, but their inner content still respects the 1320px content width.
 ## 5. Border Radius
 
 **Purpose:** Uniform corner rounding is a strong, cheap signal of a premium,
-cohesive product.
+cohesive product. SiteFueler uses subtle, professional rounding — not pill-like.
 
 **Rule:**
 
 | Element | Radius |
 | ------- | ------ |
-| Button  | 12px   |
-| Input   | 12px   |
-| Card    | 16px   |
-| Image   | 16px   |
+| Button  | 6px    |
+| Input   | 6px    |
+| Card    | 10px   |
+| Image   | 10px   |
+| Modal   | 10px   |
 | Badge   | 999px  |
 
 **Examples:**
-- Product card corners → 16px. Primary button corners → 12px. "Sale" badge → 999px (pill).
+- Product card corners → 10px. Primary button corners → 6px. "Sale" badge → 999px (pill).
 
 **Exceptions:** Decorative elements such as avatars may be fully round (`50%`).
 

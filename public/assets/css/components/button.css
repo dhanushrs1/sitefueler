@@ -17,14 +17,14 @@
     justify-content: center;
     gap: var(--space-8);
     /* Component size scale (button.md §4). Medium derives from the global
-       --button-height token; sm/lg are the component's own documented sizes. */
-    --btn-height: var(--button-height);     /* 48px — Medium default */
+       --button-height token; sm/lg map to spacing-scale values. */
+    --btn-height: var(--button-height);     /* 40px — Medium default */
     height: var(--btn-height);
-    padding-inline: var(--space-24);
+    padding-inline: var(--space-16);
     border: 1px solid transparent;
-    border-radius: var(--radius-sm);          /* 12px — no exceptions */
+    border-radius: var(--radius-sm);          /* 6px */
     font-family: var(--font-family-base);
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     font-weight: var(--font-weight-semibold);
     line-height: 1;
     text-align: center;
@@ -114,13 +114,13 @@
    Sizes
    -------------------------------------------------------------------------- */
 .btn--sm {
-    --btn-height: 40px;
-    padding-inline: var(--space-16);
-    font-size: var(--text-small);
+    --btn-height: var(--space-32);          /* 32px */
+    padding-inline: var(--space-12);
 }
 .btn--lg {
-    --btn-height: 56px;
-    padding-inline: var(--space-32);
+    --btn-height: var(--space-48);          /* 48px */
+    padding-inline: var(--space-20);
+    font-size: var(--text-body);
 }
 
 /* --------------------------------------------------------------------------

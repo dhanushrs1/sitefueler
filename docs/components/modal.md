@@ -32,7 +32,7 @@ A modal is a centered dialog over a dimmed backdrop.
 | Property       | Value                                       |
 | -------------- | ------------------------------------------- |
 | Dialog surface | `--color-surface`                            |
-| Corner radius  | 16px (`--radius-md`)                          |
+| Corner radius  | 10px (`--radius-md`)                          |
 | Shadow         | `--shadow-lg`                                 |
 | Padding        | `--space-24`                                  |
 | Section gap    | `--space-16`                                  |
