@@ -12,6 +12,7 @@ class SocialAccount extends Model
         'provider',
         'provider_id',
         'provider_email',
+        'provider_name',
         'provider_avatar',
         'provider_data',
         'access_token',

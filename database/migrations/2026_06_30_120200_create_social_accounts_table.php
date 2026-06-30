@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('provider');               // google, github, ...
             $table->string('provider_id');
             $table->string('provider_email')->nullable();
+            $table->string('provider_name')->nullable();
             $table->string('provider_avatar')->nullable();
             $table->json('provider_data')->nullable(); // raw provider payload
             $table->text('access_token')->nullable();  // encrypted (model cast)

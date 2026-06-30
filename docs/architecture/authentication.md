@@ -59,13 +59,35 @@ connect multiple providers without schema changes.
 
 ```
 Continue with Google → Google → social account exists?
-  yes → log in
-  no  → match by email or create user (role = customer, avatar from provider)
-        → save social_account → log in
+  yes → log in (refresh provider data)
+  no  → email exists?
+          yes → link provider to that user (no duplicate account)
+          no  → create customer + link provider
+        → log in
 ```
 
-`provider_avatar` is stored on the social account and copied to `users.avatar` as
-the default; a later custom upload changes `users.avatar` only.
+Resolution lives in `App\Services\SocialAuthService` (used by
+`Auth\SocialiteController`); routes are provider-agnostic
+(`/auth/{provider}/redirect|callback`) so GitHub/Microsoft/Apple add without
+redesign.
+
+**Scopes (Google):** `openid`, `profile`, `email` only. SiteFueler never requests
+contacts, calendar, drive, gmail, location, etc.
+
+**Account linking:** an existing email account + Google sign-in with the same
+email links to the **same** user (one account, never two). Linking does not
+change the user's role.
+
+**Avatar priority:** custom upload → Google → default. `provider_avatar` is stored
+on the social account and copied to `users.avatar` **only when the user has no
+avatar yet**, so a custom upload is never overwritten by Google.
+
+**Password strategy:** email users have a hashed password; Google-created users
+have `password = NULL` (column is nullable) and can set one later in settings to
+enable both methods.
+
+**Admin rule:** Google sign-in always yields a **customer** and never creates or
+promotes an admin. Admins are promoted internally only.
 
 ## Admin prefix
 
@@ -76,13 +98,15 @@ of the prefix.
 ## Security / audit
 
 Each login records `last_login_at` and `last_login_ip` (extendable to full login
-history). Tokens are encrypted at rest.
+history). OAuth tokens are encrypted at rest. Cancelled consent and invalid
+callbacks fail gracefully back to `/login`.
 
 ## Default admin (dev only)
 
 `admin@sitefueler.test` / `password` (seeded). **Change before deployment.**
 
 ## Setup
+
 
 ```bash
 php artisan migrate:fresh --seed

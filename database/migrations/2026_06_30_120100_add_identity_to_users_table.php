@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('status')->default('active')->after('avatar'); // pending | active | suspended | banned
             $table->timestamp('last_login_at')->nullable()->after('remember_token');
             $table->string('last_login_ip')->nullable()->after('last_login_at');
+
+            // Google users have no password (set one later in settings).
+            $table->string('password')->nullable()->change();
         });
     }
 
