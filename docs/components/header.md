@@ -38,13 +38,16 @@ standard container.
 **Navigation items (initial):**
 
 - Home
-- Templates
-- Plugins
-- Services
+- Templates ▾ (WordPress Themes, HTML Templates, Email Templates)
+- Plugins ▾ (SEO, Performance, Security, eCommerce)
+- Services ▾ (Custom Development, Site Migration, Maintenance & Support)
 - Blog
 - Contact
 
-Nothing more for v1.0. Nav links use a light weight (medium), not bold.
+Items with children render a **dropdown** on desktop (hover/focus) and an
+**accordion** in the off-canvas drawer. Items and submenus come from
+`config/navigation.php` (`primary` for the header, `drawer` for the fuller mobile
+menu). Nav links use a light weight (medium), not bold.
 
 **Right-side actions:**
 
@@ -88,6 +91,9 @@ search/results pages).
 - Below 1024px the primary links and CTAs move into a **right-side off-canvas
   drawer** that slides in from the right and closes via the X, the backdrop, or
   Escape (background scroll locked while open).
+- The drawer uses a **fuller menu** (`config/navigation.drawer`) than the header,
+  with **accordion submenus** (native `<details>`), the Login/Get Started CTAs,
+  and a **social follow** row.
 - The cart icon stays visible in the top bar at all sizes.
 - Breakpoints follow `design-system.md` §9 (640, 768, 1024, 1280, 1536).
 

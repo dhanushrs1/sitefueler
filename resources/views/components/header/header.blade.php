@@ -48,11 +48,20 @@
                 </button>
             </div>
 
-            <x-header.navigation :items="$items" class="nav-drawer__nav site-nav" />
+            <div class="nav-drawer__body">
+                <x-header.drawer-menu :items="config('navigation.drawer', [])" />
+            </div>
 
-            <div class="nav-drawer__cta">
-                <x-button variant="ghost" href="/login" :block="true">Login</x-button>
-                <x-button variant="primary" href="/get-started" :block="true">Get Started</x-button>
+            <div class="nav-drawer__footer">
+                <div class="nav-drawer__cta">
+                    <x-button variant="ghost" href="/login" :block="true">Login</x-button>
+                    <x-button variant="primary" href="/get-started" :block="true">Get Started</x-button>
+                </div>
+
+                <div class="nav-drawer__social">
+                    <span class="nav-drawer__social-label">Follow us</span>
+                    <x-social-links :links="config('navigation.social', [])" />
+                </div>
             </div>
         </aside>
     </div>
