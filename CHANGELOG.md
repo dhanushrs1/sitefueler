@@ -19,6 +19,11 @@ This project follows [Semantic Versioning](https://semver.org/).
   variants (New, Sale, Best Seller, Featured, Out of Stock), pill shape, optional
   icon slot, default labels; `components/badge.css`.
 - Badge review record (`docs/reviews/0003-badge-review.md`).
+- **Alert component** — four semantic variants (success/warning/danger/info) with
+  soft tints, default icons, optional title/actions/dismiss; `role` switches
+  assertive/polite by severity; `components/alert.css`. Dismiss handled by a
+  delegated vanilla-JS handler in `app.js`.
+- Alert review record (`docs/reviews/0004-alert-review.md`).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-
