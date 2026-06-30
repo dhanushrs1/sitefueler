@@ -1,11 +1,23 @@
 {{--
-    Auth layout — placeholder for login/register/forgot-password flows.
-    Minimal shell (no full header/footer). Implemented in a later milestone.
+    Auth layout — header + centered content + slim footer.
+    Designed to fit on one screen (no scroll) and stay on-brand.
 --}}
 @extends('layouts.app')
 
 @section('body')
-    <main id="main" class="main-content">
-        @yield('content')
-    </main>
+    <div class="auth-shell">
+        <x-header.header />
+
+        <main class="auth-shell__main">
+            @yield('content')
+        </main>
+
+        <footer class="auth-shell__footer">
+            <span>&copy; {{ date('Y') }} SiteFueler</span>
+            <nav class="auth-shell__legal" aria-label="Legal">
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+        </footer>
+    </div>
 @endsection

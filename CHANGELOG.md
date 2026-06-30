@@ -5,6 +5,15 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Forgot password** page (`/forgot-password`) — UI only (email + send reset link).
+
+### Changed
+- **Auth UI overhaul** — dedicated no-scroll auth layout (header + slim footer),
+  floating-label fields, premium multicolor Google button, refined typography and
+  copy across login / register / forgot password. Review
+  `docs/reviews/0014-auth-ui-review.md`.
+
 ## [0.5.0] — Identity & Authentication
 
 Milestone 5. One identity system (frontend + customer + admin), roles, OAuth, and
