@@ -44,10 +44,21 @@ a version when complete.
 
 ---
 
-## Milestone 4 — Homepage 🔄 Next
+## Milestone 4 — Admin Foundation ✅ Complete
 
 **Version:** `v0.4.0`
 
+- Admin auth (login / logout / route protection)
+- Admin layout, sidebar, topbar
+- Dashboard, breadcrumb, profile dropdown
+
+---
+
+## Milestone 5 — Homepage & Business Modules
+
+**Version:** `v0.5.0+`
+
+- Template Management (first end-to-end module)
 - Homepage assembled from components
 
 ---
