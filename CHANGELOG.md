@@ -5,11 +5,27 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] — Admin Foundation
+
+Milestone 4. The admin shell — authentication, layout, and navigation framework
+that future business modules plug into. No business modules yet.
+
+### Added
+- **Admin authentication** — email/password login, admin-only (`is_admin`),
+  logout, route protection via `auth` + `admin` (`EnsureUserIsAdmin`) middleware;
+  guests redirect to `admin.login`.
+- **Admin shell** — layout, config-driven sidebar (off-canvas on mobile), topbar
+  with notifications + profile dropdowns, breadcrumb, and a six-card dashboard.
+- **Profile** page (update name/email).
+- Grouped, **named** admin routes (`admin.`) ready for `Route::resource` modules.
+- `is_admin` migration, `AdminUserSeeder`, `config/admin.php`, `x-admin.icon`.
+- Admin assets under `public/assets/admin/` (admin.css, admin.js).
+- Architecture doc `docs/architecture/authentication.md`; review
+  `docs/reviews/0012-admin-foundation-review.md`.
+
 ### Fixed
-- **Assets missing behind a proxy/tunnel (ngrok):** trust forwarded headers
-  (`X-Forwarded-Proto`/`Host`) so `asset()`/`url()` generate correct
-  `https://<host>/…` URLs when tunnelled (no more mixed-content/unstyled pages).
-  Local `http://127.0.0.1:8000` access is unchanged.
+- Assets behind a proxy/tunnel (ngrok): trust forwarded headers so `asset()`/`url()`
+  generate correct `https://<host>/…` URLs (no more unstyled tunnelled pages).
 
 ## [0.3.1] — Shell & Button Polish
 
