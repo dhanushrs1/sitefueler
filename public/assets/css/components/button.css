@@ -16,7 +16,10 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-8);
-    height: var(--button-height);           /* 48px — Medium default */
+    /* Component size scale (button.md §4). Medium derives from the global
+       --button-height token; sm/lg are the component's own documented sizes. */
+    --btn-height: var(--button-height);     /* 48px — Medium default */
+    height: var(--btn-height);
     padding-inline: var(--space-24);
     border: 1px solid transparent;
     border-radius: var(--radius-sm);          /* 12px — no exceptions */
@@ -111,24 +114,22 @@
    Sizes
    -------------------------------------------------------------------------- */
 .btn--sm {
-    height: 40px;
+    --btn-height: 40px;
     padding-inline: var(--space-16);
     font-size: var(--text-small);
 }
 .btn--lg {
-    height: 56px;
+    --btn-height: 56px;
     padding-inline: var(--space-32);
 }
 
 /* --------------------------------------------------------------------------
-   Icon-Only  (square, equal to height)
+   Icon-Only  (square, tracks the current size via --btn-height)
    -------------------------------------------------------------------------- */
 .btn--icon {
-    width: var(--button-height);
+    width: var(--btn-height);
     padding-inline: 0;
 }
-.btn--icon.btn--sm { width: 40px; }
-.btn--icon.btn--lg { width: 56px; }
 
 /* --------------------------------------------------------------------------
    Block (full-width — layout choice, e.g. mobile CTAs / forms)
@@ -162,8 +163,10 @@
     border: 2px solid currentColor;
     border-top-color: transparent;
     border-radius: var(--radius-full);
-    animation: btn-spin var(--duration-normal) linear infinite;
-    /* spinner inherits the variant's text color via a reset below */
+    /* Rotation period for a continuous progress indicator. This is a functional
+       loop, not a §20 brand transition, so it uses a conventional spinner speed
+       rather than --duration-normal (which would spin frantically at 200ms). */
+    animation: btn-spin 0.6s linear infinite;
 }
 /* Restore a visible spinner color (label color was set transparent) */
 .btn--primary.btn--loading::after,

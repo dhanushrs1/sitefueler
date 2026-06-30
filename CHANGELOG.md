@@ -3,18 +3,24 @@
 All notable changes to SiteFueler are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [Unreleased] — Milestone 2: Core UI Components
 
-- Button component implementation (CSS + Blade).
-- Switched to milestone-based roadmap.
-- Replaced MIT license with a proprietary license (commercial software).
-- Simplified Git flow to `main` + `feature/*` (dropped permanent `develop`).
-- Added Architecture Decision Records under `docs/meetings/`.
+### Added
+- **Button component** — single parameter-driven Blade component
+  (`components/button.blade.php`) with four variants, three sizes, all six states,
+  icon support (left / right / icon-only), and `components/button.css`.
+- Button review record (`docs/reviews/0001-button-review.md`).
 
-## [0.1.0] — Initial foundation
+### Changed
+- Button Blade strategy: replaced per-variant files with one reusable, parameter-
+  driven component (variant/size/href/block/iconOnly/loading/disabled + icon slots).
 
-- Laravel project setup
-- Project architecture
-- Design system
-- Component specifications
-- CSS foundation (variables, layout, utilities)
+## [0.1.0] — Foundation Release
+
+- Laravel project setup, project architecture, folder structure
+- Design system (`docs/design-system.md`) incl. semantic colors + soft tints
+- Component specifications (nine specs in `docs/components/`)
+- CSS foundation (variables, layout, utilities; tokens-first architecture)
+- Milestone-based roadmap; proprietary license
+- Git workflow (`main` + `feature/*`), Conventional Commits, Definition of Done
+- Architecture Decision Records (`docs/meetings/`) and release notes (`docs/releases/`)
