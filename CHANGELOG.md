@@ -3,35 +3,36 @@
 All notable changes to SiteFueler are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased] — Milestone 2: Core UI Components
+## [Unreleased]
+
+## [0.2.0] — Core UI Components
+
+Milestone 2. Seven token-based, accessible, reusable components built via the
+Specification → Implementation → Review → Merge lifecycle.
 
 ### Added
-- **Button component** — single parameter-driven Blade component
-  (`components/button.blade.php`) with four variants, three sizes, all six states,
-  icon support (left / right / icon-only), and `components/button.css`.
-- Button review record (`docs/reviews/0001-button-review.md`).
+- **Button** — single parameter-driven component (`components/button.blade.php`):
+  four variants, three sizes, six states, icon support (left / right / icon-only).
 - **Form System** — shared `field` wrapper plus `input`, `textarea`, `select`,
-  `checkbox`, `radio`, and `switch` components, with validation states
-  (success/warning/error/disabled/readonly), label/hint/error, prefix/suffix
-  icons, and `group` layouts (single / two-column / inline); `components/form.css`.
-- Form review record (`docs/reviews/0002-form-review.md`).
-- **Badge component** — single parameter-driven component with five fixed
-  variants (New, Sale, Best Seller, Featured, Out of Stock), pill shape, optional
-  icon slot, default labels; `components/badge.css`.
-- Badge review record (`docs/reviews/0003-badge-review.md`).
-- **Alert component** — four semantic variants (success/warning/danger/info) with
-  soft tints, default icons, optional title/actions/dismiss; `role` switches
-  assertive/polite by severity; `components/alert.css`. Dismiss handled by a
-  delegated vanilla-JS handler in `app.js`.
-- Alert review record (`docs/reviews/0004-alert-review.md`).
-- **Card component** — one base card (`card/card.blade.php`) with media (4:3) +
-  badge overlay, body, and footer slots; Product/Service/Blog variants inherit it;
-  interactive whole-card link with hover lift; `components/card.css`.
-- Card review record (`docs/reviews/0005-card-review.md`).
-- **Table component** — single admin/data table style (`table/table.blade.php`)
-  with semantic markup, scroll wrapper, selection/actions/status support, hover &
-  selected rows, empty and loading states; `components/table.css`.
-- Table review record (`docs/reviews/0006-table-review.md`).
+  `checkbox`, `radio`, `switch`; validation states, label/hint/error, prefix/suffix
+  icons, and `group` layouts (single / two-column / inline).
+- **Badge** — five fixed variants (New, Sale, Best Seller, Featured, Out of Stock),
+  pill shape, optional icon, default labels.
+- **Alert** — four semantic variants with soft tints, default icons, optional
+  title/actions/dismiss; assertive/polite `role` by severity; dismiss via app.js.
+- **Card** — one base card (media 4:3 + badge overlay, body, footer) with
+  Product/Service/Blog variants and interactive whole-card link.
+- **Table** — single admin/data table style with selection/actions/status,
+  hover & selected rows, empty and loading states.
+- **Modal** — native `<dialog>` based; sizes, confirmation/form variants, focus
+  trap, Escape, backdrop click, scroll lock, 200ms transitions.
+- Component review records `docs/reviews/0001`–`0007`.
+- Split component CSS under `public/assets/css/components/` aggregated by
+  `components.css`.
+
+### Changed
+- Button Blade strategy: per-variant files replaced by one parameter-driven
+  component (the blueprint reused by Badge, Alert, Card).
 
 ### Changed
 - Button Blade strategy: replaced per-variant files with one reusable, parameter-
