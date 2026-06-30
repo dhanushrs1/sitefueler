@@ -35,7 +35,7 @@
                     <x-admin.icon name="settings" /> <span>Settings</span>
                 </a>
                 <div class="admin-dropdown__divider"></div>
-                <form method="post" action="{{ route('admin.logout') }}">
+                <form method="post" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="admin-dropdown__item admin-dropdown__item--danger">
                         <x-admin.icon name="logout" /> <span>Logout</span>

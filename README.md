@@ -9,6 +9,7 @@ resources.
 - **Milestone 2 — Core UI Components:** ✅ Complete (`v0.2.0`, refined in `v0.2.1`)
 - **Milestone 3 — Layout Components:** ✅ Complete (`v0.3.0`, polished in `v0.3.1`)
 - **Milestone 4 — Admin Foundation:** ✅ Complete (`v0.4.0`)
+- **Milestone 5 — Identity & Authentication:** ✅ Complete (`v0.5.0`)
 - **Next:** Template Management (first business module)
 
 ## Technology

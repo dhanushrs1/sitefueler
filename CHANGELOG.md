@@ -5,6 +5,28 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] — Identity & Authentication
+
+Milestone 5. One identity system (frontend + customer + admin), roles, OAuth, and
+a unified login page. Replaces the standalone admin login and the `is_admin` flag.
+
+### Added
+- **Unified `/login`** (marketing layout) and **`/register`** — email/password +
+  **Continue with Google** (Socialite).
+- **Roles** (`customer`, `admin`, `editor`, `support`, `super-admin`) + `role:`
+  middleware (`EnsureUserHasRole`); role-based post-login redirect.
+- **`social_accounts`** table (provider data JSON, encrypted tokens) — multi-provider.
+- **users** expanded: `uuid` (route key), `role_id`, `username`, `avatar`,
+  `status`, `last_login_at`, `last_login_ip`.
+- **Configurable admin prefix** (`ADMIN_PREFIX`); `config/authentication.php`.
+- Auth-aware header/drawer; customer `/dashboard` placeholder.
+- `RoleSeeder`; `docs/architecture/authentication.md`; review
+  `docs/reviews/0013-identity-review.md`.
+
+### Removed
+- Standalone admin login view, admin `AuthController`, `EnsureUserIsAdmin`
+  middleware, `is_admin` migration, and unused `.admin-auth` styles.
+
 ## [0.4.0] — Admin Foundation
 
 Milestone 4. The admin shell — authentication, layout, and navigation framework

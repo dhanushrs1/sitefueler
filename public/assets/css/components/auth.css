@@ -1,0 +1,88 @@
+/* ==========================================================================
+   SiteFueler — Auth pages (components/auth.css)
+   --------------------------------------------------------------------------
+   Centered login / register card on the marketing layout. Tokens only.
+   ========================================================================== */
+
+.auth {
+    padding-block: var(--space-64);
+}
+.auth__card {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+}
+.auth__title {
+    text-align: center;
+    font-size: var(--text-h3);
+    color: var(--color-heading);
+    margin-bottom: var(--space-8);
+}
+.auth__subtitle {
+    text-align: center;
+    color: var(--color-muted);
+    font-size: var(--text-small);
+    margin-bottom: var(--space-24);
+}
+
+.auth__forgot {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--space-16);
+}
+.auth__forgot a {
+    font-size: var(--text-small);
+    color: var(--color-primary);
+}
+
+.auth__divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    margin: var(--space-24) 0;
+    color: var(--color-muted);
+    font-size: var(--text-small);
+}
+.auth__divider::before,
+.auth__divider::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+.auth__google {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    width: 100%;
+    height: var(--button-height);
+    padding-inline: var(--space-16);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-heading);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: background-color var(--duration-normal) var(--ease),
+                border-color var(--duration-normal) var(--ease);
+}
+.auth__google:hover {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-300);
+    color: var(--color-heading);
+}
+.auth__google svg { width: 1.15em; height: 1.15em; }
+
+.auth__alt {
+    text-align: center;
+    margin-top: var(--space-24);
+    color: var(--color-muted);
+    font-size: var(--text-small);
+}
+.auth__alt a {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
