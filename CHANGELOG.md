@@ -5,6 +5,44 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] — Account Security & 2FA
+
+### Added
+- **Two-factor authentication (TOTP)** — mandatory for staff roles (`admin`,
+  `super-admin`, `editor`, `support`). Works with any standard authenticator app
+  (Google / Microsoft Authenticator, Authy, 1Password, Bitwarden). New users in
+  these roles are forced through a **setup wizard** (QR + first-code verify) and
+  cannot reach the admin panel until `two_factor_confirmed_at` is set.
+- **Recovery codes** — 10 single-use, hashed codes shown once at setup and
+  regenerable from the admin **Security** page.
+- **Trusted devices** — "remember this device for 30 days" (signed, expiring,
+  http-only cookie; SHA-256 hash stored) lets a known device skip the challenge.
+  Listed and revocable from the Security page.
+- **Login history** — append-only audit trail of every attempt (success/failure)
+  with IP, browser, and device, surfaced on the Security page.
+- **Admin Security page** (`/{admin}/security`) — 2FA status, recovery-code
+  regeneration, trusted-device management, recent sign-in activity.
+- New middleware: `2fa.enrolled`, `2fa.verified`, `admin.timeout`.
+- Services `TwoFactorService` / `TrustedDeviceService`; helpers `PasswordRules`,
+  `DeviceInfo`, `LoginAudit`. Deps `pragmarx/google2fa`, `bacon/bacon-qr-code`.
+
+### Changed
+- **Login flow** now validates credentials without logging in when 2FA is
+  required, completing authentication only after the second factor passes. Google
+  sign-in funnels staff through the same challenge/enrollment (no OAuth bypass).
+- **Login throttling** — failed attempts rate-limited per email+IP (customers
+  5/15 min, admins 5/30 min); the 2FA challenge is limited to 5/15 min.
+- **Role-aware password policy** — customers min 8; admins min 12 with mixed
+  case, number, symbol, and a compromised-password check.
+- **Shorter admin idle session** (`ADMIN_SESSION_LIFETIME`, default 30 min).
+- `docs/architecture/authentication.md` updated to **v1.1**.
+
+### Fixed
+- **Login `RuntimeException`** ("This password does not use the Bcrypt algorithm")
+  caused by a stale `$2a$` bcrypt hash on the seeded admin that this PHP build's
+  `password_get_info()` reports as `unknown`. Re-seeding regenerates with `$2y$`
+  so Laravel's `BcryptHasher::check()` accepts it.
+
 ## [0.5.2] — Google OAuth Fix
 
 ### Fixed
